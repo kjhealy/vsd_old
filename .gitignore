@@ -1,0 +1,9 @@
+.Rproj.user
+resources
+public
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+.hugo_build.lock
+static/class/

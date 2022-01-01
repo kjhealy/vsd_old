@@ -1,0 +1,11 @@
+<h3>Work or other Assignments</h3>
+
+{{ if .Page.Params.work}}
+
+<p><a href="{{ .Page.Params.work }}">Today's work</a>.</p>
+
+{{ else }}
+
+<p>No work assigned today.</p>
+
+{{ end }}

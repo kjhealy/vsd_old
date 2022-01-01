@@ -1,0 +1,11 @@
+<h3>Code</h3>
+
+{{ if .Page.Params.show}}
+
+<p><a href="{{ .Page.Params.code }}">Code and examples from today's class</a>.</p>
+
+{{ else }}
+
+<p>No code or examples today.</p>
+
+{{ end }}

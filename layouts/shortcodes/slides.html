@@ -1,0 +1,12 @@
+
+<h3>Slides</h3>
+
+{{ if .Page.Params.slides}}
+
+<p><a href="{{ .Page.Params.slides }}">Download the slides from today’s class</a>.</p>
+
+{{ else }}
+
+<p>The slides from today will be posted here after class.</p>
+
+{{ end }}

@@ -1,0 +1,59 @@
+<table class="schedule" style="max-width:100%">
+    <tbody>
+        {{- range $.Site.Data.schedule.lessons }}
+
+
+        <tr>
+            <td align="right" style="width:20%;text-align:right">{{ .date }}</td>
+            <td style="width:50%;text-align:left">{{ .title | markdownify }}</td>
+
+            {{- if .header }}
+
+            <td style="width:10%;text-align:center" class="mid-table-header">Class</td>
+            <td style="width:10%;text-align:center" class="mid-table-header">Show</td>
+            <td style="width:10%;text-align:center" class="mid-table-header">Work</td>
+
+            {{- else }}
+
+            {{- if .class }}
+            <td align="center" style="width:10%;text-align:center"><a href="{{ .Site.baseurl }}/class/{{ .class }}/">
+                    <i class="fas fa-book-reader fa-lg"></i></a></td>
+            {{- else }}
+            <td align="center" style="width:10%;text-align:center">
+                <font color="f1f1f1">
+                    <i class="fas fa-book-reader fa-lg"></i></font>
+            </td>
+            {{- end }}
+
+
+            {{- if .show }}
+            <td align="center" style="width:10%;text-align:center"><a
+                    href="{{ .Site.baseurl }}/show/{{ .show }}/">
+                    <i class="fas fa-chalkboard-teacher fa-lg"></i></a></td>
+            {{- else }}
+            <td align="center" style="width:10%;text-align:center">
+                <font color="f1f1f1">
+                    <i class="fas fa-chalkboard-teacher fa-lg"></i></font>
+            </td>
+            {{- end }}
+
+
+
+            {{- if .work }}
+            <td align="center" style="width:10%;text-align:center"><a
+                    href="{{ .Site.baseurl }}/work/{{ .work }}/">
+                    <i class="fas fa-laptop-code"></i></a></td>
+            {{- else }}
+            <td align="center" style="width:10%;text-align:center">
+                <font color="f1f1f1">
+                    <i class="fas fa-laptop-code"></i></font>
+            </td>
+            {{- end }}
+
+            {{- end }}
+        </tr>
+        {{- end }}
+
+    </tbody>
+
+</table>

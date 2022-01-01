@@ -1,0 +1,25 @@
+---
+title: "02: Get Up and Running"
+date: "2020-08-21"
+slides: "02_vsd_s22"
+pdf: "02_vsd_s22"
+thumb: "02_vsd_s22_thumb"
+menu:
+  class:
+    parent: Content
+    weight: 1
+type: docs
+bibliography: "../../../static/bib/references.bib"
+csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
+
+
+
+editor_options: 
+  chunk_output_type: console
+---
+
+
+Today we got a first taste of working with R and RStudio. The slides contain a little more information than we covered, so be sure to take a look at them. Also check out the corresponding examples in [show/](/show/), which contain the code we discussed.
+
+
+{{% slide-buttons %}}

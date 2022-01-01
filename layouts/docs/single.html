@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <main id="main">
+      <h1>{{ .Title }}</h1>
+
+
+      {{ if isset .Params "due_date" }}
+      <div>
+          Due by <strong>{{ .Params.due_time }}</strong> on {{ dateFormat "Monday, January 2, 2006" .Params.due_date }}
+      </div>
+      {{ end }}
+
+      {{ if isset .Params "read_date" }}
+      <div>
+          Read before class on {{ dateFormat "Monday, January 2, 2006" .Params.read_date }}
+      </div>
+      {{ end }}
+
+      {{ if isset .Params "class_date" }}
+      <div>
+          Materials from class on {{ dateFormat "Monday, January 2, 2006" .Params.class_date }}
+      </div>
+      {{ end }}
+
+
+      {{ .Content }}
+  </main>
+  {{ end }}

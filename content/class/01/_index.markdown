@@ -1,0 +1,73 @@
+---
+title: "01: Getting Started"
+date: "2020-08-17"  
+read_date: "2020-08-21"
+slides: "slides/01_vsd_s22.pdf"  
+pdf: "01_vsd_s22"
+thumb: "01_vsd_s22_thumb"
+menu:
+  class:
+    parent: Content
+    weight: 1
+type: docs
+bibliography: "../../../static/bib/references.bib"
+csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+We will be doing a lot of work in this class using two related pieces of software. The first is [R](https://www.r-project.org), a widely-used programming language designed for statistical computing. The second is [RStudio](https://rstudio.com), an *integrated development environment*, or IDE, for R. Think of R as being a little like the parts of a car that do the work of moving around: the engine, transmission, wheels, brakes, and so on. Think of RStudio as being like the driver’s seat and dashboard where you control those pieces of the car.
+
+These notes describe how to download and install R and RStudio on your laptop, as well as how to install some additional stuff inside of R that we’ll be using also.
+
+### Downloading R and RStudio
+
+Before you begin, watch [this short screencast](https://youtu.be/9UITYisElZ8) on where and how to download R and RStudio:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9UITYisElZ8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+
+### Installing R and RStudio on your Laptop
+
+-   First install R (<http://cloud.r-project.org>). Choose the version appropriate for your computer: [macOS](https://cloud.r-project.org/bin/macosx/R-4.0.2.pkg), [Windows](https://cloud.r-project.org/bin/windows/base/R-4.0.2-win.exe), or [Linux](https://cloud.r-project.org/bin/linux/).
+
+-   Next, install RStudio (<http://rstudio.com>). Follow the links to download the [free RStudio Desktop edition](https://rstudio.com/products/rstudio/download/#download) recommended for your computer.
+
+### Installing the required additional Packages
+
+You can watch [this short screencast](https://www.youtube.com/embed/s9JYECUf2rA) demonstrating the next step, which is to install some extra stuff that will be useful for the class.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s9JYECUf2rA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+
+Once R and RStudio are installed, launch RStudio. Then, either carefully type in or (better) copy-and-paste the following lines of code at R’s command prompt, located in the RStudio window named “Console”, and then hit return. In the code below, the `<-` arrow is made up of two keystrokes, first \< and then the short dash or minus symbol, -.
+
+``` r
+## Code to run at the RStudio console begins here
+
+my_packages <- c("tidyverse", "broom", "coefplot", "cowplot", 
+                  "drat", "gapminder", "GGally", "ggforce", 
+                  "ggrepel", "ggraph", "ggridges", "graphlayouts", 
+                  "here", "margins", "maps", "mapproj", 
+                 "mapdata", "MASS", "naniar", "patchwork", 
+                 "prismatic", "quantreg", "remotes", "scales", 
+                 "sf", "socviz", "survey", "srvyr", "tidygraph", 
+                 "viridis", "viridisLite")
+
+install.packages(my_packages, repos = "http://cran.rstudio.com")
+
+data_packages <- c("covdata", "congress", "demog", "uscenpops", "kjhnet", "nycdogs")
+
+drat::addRepo("kjhealy")
+install.packages(data_packages)
+
+## Code to run ends here
+```
+
+This code will take a little while to run. Let me know in the Slack (in #general) if you have any problems.
+
+### Optional: get set up on GitHub
+
+If you do not have one already, it will be useful to create a GitHub account and obtain a GitHub Personal Access Token. This is not required for the course, it will just be helpful to have one. The process is a little tedious, but to get set up, read and *carefully follow* the instructions in Parts I and II of [Happy Git With R](https://happygitwithr.com), and then also the instructions in [Appendix B](https://happygitwithr.com/github-pat.html) of the same document.
+
+{{% slide-buttons %}}
