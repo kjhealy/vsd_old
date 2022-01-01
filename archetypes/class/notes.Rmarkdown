@@ -12,4 +12,7 @@ editor_options:
 ---
 
 
-{{% slide-buttons %}}
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```
