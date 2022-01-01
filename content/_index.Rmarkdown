@@ -8,70 +8,12 @@ csl: "../static/bib/chicago-syllabus-no-bib.csl"
 
 
 
-This is the course website for the Spring 2022 edition of SOCIOL 232, Visualizing Social Data, taught at [Duke University](https://duke.edu).
+This is the course website for the Spring 2022 edition of SOCIOL 232, Visualizing Social Data, taught at [Duke University](https://duke.edu) by [Kieran Healy](https://kieranhealy.org/).
 
 
-## Details
+## Syllabus
 
-- _Time_: Mondays and Wednesdays, 10:15am-11:30am 
-- _Location_: Reuben-Cooke Building Room 127
-- _Instructor_: Professor [Kieran Healy](https://kieranhealy.org)
-- _Office location_: Reuben-Cooke Building Room 268. 
-- _Office hours_: By appointment. 
-
-## Core Texts
-
-I recommend (but do not require) you buy two books:
-
-- [@healy:2019] A draft version is [freely-available](https://socviz.co) online. The print version can be purchased at [Amazon](https://amzn.to/2vfAixM) and other bookshops.
-- [@wickhamgrolemund:2017] A draft version is [freely-available](https://r4ds.had.co.nz) online. The print version can be purchased at [Amazon](https://www.amazon.com/R-Data-Science-Hadley-Wickham/dp/1491910399/) and other bookshops.
-
-
-## Other Material
-
-We will be reading other material as we go. I will make it available to you beforehand. It will include material from the following sources, but this is not an exhaustive list:
-
-### Ways of Seeing
-- [@berger72:_ways_seein]
-- [@cairo:2019]
-- [@rendgen19:_histor_infor_graph]
-- [@ware08:_visual_think_desig]
-
-### Groups and Categories
-- [@battle-baptiste18:_w]
-- [@friendly17:_discr_data_analy_r]
-
-### Trends and Flows
-
-- [@cleveland1994]
-- [@hyndman20:_forec]
-- [@tukey77:_explor_data_analy]
-
-### Populations and Distributions
-
-- [@schöley17:_visual_compos_data_lexis_surfac]
-- [@walker70:_statis_united_states]
-
-### The View from Nowhere
-
-- Paul Starr, "The Sociology of Official Statistics", in [@alonso80:_polit_number]
-- [@pettit12:_invis_men]
-
-### Networks and Ties
-- [@lima14:_book_trees]
-- [@ognyanova19:_networ_visual_r]
-
-### Maps
-- [@field18:_cartog]
-- [@lynch60:_image_city]
-
-### Design
-- [@berinato16:_good_chart]
-- [@few09:_now_you_see_it]
-- [@munzer14:_visual_analy_desig]
-- [@tufte83:_visual_displ_quant_infor]
-- [@wilke:2019]
-
+Consult the [syllabus](/syllabus/) for details about the class.
 
 ## Software
 

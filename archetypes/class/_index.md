@@ -5,11 +5,3 @@ tags: ["class"]
 ---
 
 
-# Slides, Code, and Work
-
-{{< slides >}}
-
-{{< code >}}
-
-{{< work >}}
-

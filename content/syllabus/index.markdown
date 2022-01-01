@@ -1,16 +1,13 @@
 ---
-title: Syllabus
-slug: syllabus
+title: Visualizing Social Data Syllabus
 citeproc: true
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-syllabus-no-bib.csl
 ---
 
+{{< courseinfo >}}
+
 ## About this Course
-
-This course is a seminar for Freshers. It is part of the [Duke Focus Program](https://focus.duke.edu), specifically the “[What If? Explaining the Past/Predicting the Future](https://focus.duke.edu/clusters-courses/what-if-explaining-pastpredicting-future)” cluster, and is taught alongside Professor [Lillian Pierce’s](https://services.math.duke.edu/~pierce/) seminar “Cryptography and Society”, and Professor [Lynn Smith-Lovin’s](https://scholar.google.com/citations?user=aI_za38AAAAJ&hl=en) seminar “Mathematical Models of Self, Identity and Emotion”.
-
-## Course Objectives
 
 This class will do two things. First, it will teach you how to use modern, widely-used tools to create insightful, beautiful, reproducible visualizations of social science data. Second, you will also learn about the theory and practice of efforts to visualize sociological data, and society more generally. We will think about different ways of looking at social science data, about where data comes from in the first place, and about the implications of choosing to represent it in different ways.
 

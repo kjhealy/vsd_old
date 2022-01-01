@@ -27,8 +27,35 @@ footnotereturnlinkcontents = "<sup>^</sup>"
 ignoreFiles = ['\.Rmd$', '_files$', '_cache$', '\.knit\.md$', '\.utf8\.md$']
 pygmentsUseClasses = true
 
+
+[params]
+  my_name = "Kieran Healy"
+  my_email = "kieran.healy@duke.edu"
+  my_url = "https://kieranhealy.org"
+  my_twitter = "kjhealy"
+  my_github = "kjhealy"
+  my_office = "268 Reuben-Cooke"
+  my_contact_policy = "If you have questions or want to discuss things that we're doing in class, it's best to use the course Slack. I strongly encourage you not to be shy about raising queries or asking for help in the &#35;general channel. For other matters (such as absences, or to set up a meeting, etc), email me."
+  crs_number = "SOCIOL 232"
+  crs_semester = "Spring 2022"
+  crs_days = "Mondays and Wednesdays"
+  crs_time = "10:15am to 11:30am"
+  crs_location = "Room 127, Reuben-Cooke"
+  crs_dates = "Jan 5th - April 20th"
+  crs_github = "kjhealy/vsd"
+  crs_slack = "TBA"
+  crs_copyrightYear = "2022"
+
+[university]
+name = "Duke University"
+url = "https://www.duke.edu"
+
+[school]
+name = "Sociology Department"
+url = "https://sociology.duke.edu/"
+
 [outputs]
-  home = [ "HTML", "RSS", "WebAppManifest" ]
+  home = [ "HTML", "RSS" ]
   section = [ "HTML", "RSS" ]
 
 [mediaTypes."application/manifest+json"]
@@ -72,19 +99,14 @@ pygmentsUseClasses = true
   weight = 2.0
 
   [[menu.nav]]
-  name = "Code"
-  url = "/tags/code/"
+  name = "Syllabus"
+  url = "/syllabus/"
   weight = 3.0
-
-  [[menu.nav]]
-  name = "Work"
-  url = "/tags/work/"
-  weight = 4.0
 
   [[menu.nav]]
   name = "Resources"
   url = "/resources/"
-  weight = 5.0
+  weight = 4.0
 
 ## Slug specifications have to be at the end in TOML files
 ## Slug

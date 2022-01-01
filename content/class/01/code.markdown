@@ -1,19 +1,12 @@
 ---
-title: "01: Example 1"
-date: "2020-08-17"
-menu:
-  show:
-    parent: Examples
-    weight: 1
+title: "01 - Code"
+date: "2022-01-01"
 type: docs
 bibliography: "../../../static/bib/references.bib"
 csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
-slides: "01-slides"
-
-
-
+tags: ["code"]
 editor_options: 
   chunk_output_type: console
 ---
 
-# Nothing to show this week
+## No code this week!
