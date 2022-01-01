@@ -1,0 +1,15 @@
+---
+title: "01 - Notes"
+date: "2022-01-01"  
+slides: "01_vsd_s22.pdf"  
+pdf: "01_vsd_s22"
+thumb: "01_vsd_s22_thumb"
+type: docs
+bibliography: "../../../static/bib/references.bib"
+csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
+editor_options: 
+  chunk_output_type: console
+---
+
+
+{{% slide-buttons %}}
