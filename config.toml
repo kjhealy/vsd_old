@@ -90,21 +90,23 @@ url = "https://sociology.duke.edu/"
 
   [[menu.nav]]
   name = "Home"
-  url = "/"
+  pageref = "/"
   weight = 1.0
 
   [[menu.nav]]
   name = "Class"
-  url = "/class/"
+  pageref = "/class/"
   weight = 2.0
 
   [[menu.nav]]
   name = "Syllabus"
+  pageref = "/syllabus/"
   url = "/syllabus/"
   weight = 3.0
 
   [[menu.nav]]
   name = "Resources"
+  pageref = "/resources/"
   url = "/resources/"
   weight = 4.0
 

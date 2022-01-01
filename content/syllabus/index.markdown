@@ -1,5 +1,5 @@
 ---
-title: Visualizing Social Data Syllabus
+title: Syllabus
 citeproc: true
 bibliography: ../../static/bib/references.bib
 csl: ../../static/bib/chicago-syllabus-no-bib.csl
@@ -18,7 +18,7 @@ By the end of the course you will
     while others may fail to inform or actively mislead.
 -   Know how to create a wide range of plots in R using ggplot2.
 -   Know how to refine plots for effective presentation.
--   Have an understanding of some issues surrounding the collection and
+-   Have an understanding of issues surrounding the collection and
     representation of data in the social sciences and beyond.
 
 ## Core Texts
@@ -84,19 +84,15 @@ We will do all of our visualization work in this class using [R](https://cran.r-
 
 If you haven’t used these tools before, don’t worry. The course does not presuppose any familiarity with them. We will get up and running with them during the first week.
 
-## Schedule Overview
+## Schedule
 
 {{% topiclist %}}
 
-As the weeks go by, consult the [Schedule Page](/schedule/) for more information on weekly topics, problem sets, readings, and other materials. The schedule is likely to change as we go. Links to readings, assignments, and other materials from class will be posted on that page.
+The schedule is likely to change as we go. Links to readings, lecture notes, assignments, and other materials from class will be posted via the [Class](/class/) page.
 
 ## COVID-19 Considerations
 
-This semester is going to be weird.
-
-This is a *hybrid* class. [What this means](https://registrar.duke.edu/instruction-modes) is that students are on campus and we have the option of meeting in person, in Soc/Psych 126. But it will also be possible to access notes, slides, problem sets, and other class materials remotely if necessary, and class periods may also be presented remotely. The situation is fluid and I expect it to change as the semester progresses—hopefully for the better. I will be in touch with you via Email and the course Slack and keep you informed about what is happening. Details on the current state of the University’s response and policies can be found at [Duke United](https://returnto.duke.edu) and in their [FAQ for Undergraduates](https://keeplearning.duke.edu/undergraduate-students/).
-
-There is more to the situation than simply logistics, however. The transition to university courses can be challenging enough in ordinary times for first year students. The pandemic has made things harder for everyone. Teaching properly and learning well requires effort from me and from you. We will try to remember how fortunate we are to have this opportunity to work and learn together, even though things are more difficult than usual. You can expect me to be sensible and reasonable in the work I require for the course, and to be flexible and responsive as circumstances change over the duration of the semester. I ask that you do your best to proceed in good faith, to care for yourself and your classmates, and to work with me to make the best things as you begin what will be a very unusual first year of college.
+At present, all classes are fully remote until January 18th. I will email you details about the Zoom meetings.
 
 ## Course policies
 
@@ -106,7 +102,7 @@ There is more to the situation than simply logistics, however. The transition to
 
 ## Course Slack
 
-During the first week you will receive an invitation to the [Slack workgroup](https://soc179fs.slack.com) for the course. This will be the most convenient way to share information with everyone, to distribute links to readings and code, and to contact me.
+During the first week you will receive an invitation to the [Slack workgroup]() for the course. This will be the most convenient way to share information with everyone, to distribute links to readings and code, and to contact me.
 
 ## Required Work and Grading
 

@@ -5,6 +5,10 @@ bibliography: "../static/bib/references.bib"
 csl: "../static/bib/chicago-syllabus-no-bib.csl"
 ---
 
+<figure>
+<img src="/images/plotter-cropped.gif" alt="Pen plotter drawing a graph">
+</figure>
+
 This is the course website for the Spring 2022 edition of SOCIOL 232, Visualizing Social Data, taught at [Duke University](https://duke.edu) by [Kieran Healy](https://kieranhealy.org/).
 
 ## Syllabus
