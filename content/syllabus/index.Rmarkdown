@@ -38,52 +38,6 @@ I recommend (but do not require) you buy two books:
 - [@wickhamgrolemund:2017] A draft version is freely-available online. The print version can be purchased at [Amazon](https://www.amazon.com/R-Data-Science-Hadley-Wickham/dp/1491910399/) and other bookshops.
 
 
-## Other Material 
-
-We will be reading other material as we go. I will make it available to you beforehand. It will include material from the following sources, but this is not an exhaustive list:
-
-### Ways of Seeing
-- [@berger72:_ways_seein]
-- [@cairo:2019]
-- [@rendgen19:_histor_infor_graph]
-- [@ware08:_visual_think_desig]
-
-### Groups and Categories
-- [@battle-baptiste18:_w]
-- [@friendly17:_discr_data_analy_r]
-
-### Trends and Flows
-
-- [@cleveland1994]
-- [@hyndman20:_forec]
-- [@tukey77:_explor_data_analy]
-
-### Populations and Distributions
-
-- [@schöley17:_visual_compos_data_lexis_surfac]
-- [@walker70:_statis_united_states]
-
-### The View from Nowhere 
-
-- Paul Starr, "The Sociology of Official Statistics", in [@alonso80:_polit_number] 
-- [@pettit12:_invis_men]
-
-### Networks and Ties
-- [@lima14:_book_trees] 
-- [@ognyanova19:_networ_visual_r]
-
-### Maps
-- [@field18:_cartog]
-- [@lynch60:_image_city]
-
-### Design
-- [@berinato16:_good_chart]
-- [@few09:_now_you_see_it]
-- [@munzer14:_visual_analy_desig]
-- [@tufte83:_visual_displ_quant_infor]
-- [@wilke:2019] 
-
-
 ## Software
 
 We will do all of our visualization work in this class using [R](https://cran.r-project.org/) and use  [RStudio](https://www.rstudio.com/) to manage our code and projects. [R](https://cran.r-project.org/) is a freely-available programming language that is designed for statistical computing and widely used across the natural and social sciences, as well as in the rapidly-growing world of "data science" generally. [RStudio](https://www.rstudio.com/) is an integrated development environment, or IDE, for R, a kind of control center from which you can manage the engine-room of R itself. It is also freely available. 
@@ -96,33 +50,34 @@ If you haven't used these tools before, don't worry. The course does not presupp
 
 The schedule is likely to change as we go. Links to readings, lecture notes, assignments, and other materials from class will be posted via the [Class](/class/) page. 
  
-## COVID-19 Considerations
+### COVID-19 Considerations
 
 At present, all classes are fully remote until January 18th. I will email you details about the Zoom meetings.
 
-## Course policies
+### Course policies
 
 - Attendance is required. I am a reasonable person; if you need to be absent please _let me know in advance_ insofar as that is possible.
 - Do the assigned readings in advance of class. 
 - Submit memos, problem sets, or other assigned work when they are due. 
 
-## Course Slack
+### Course Slack
 
 During the first week you will receive an invitation to the [Slack workgroup]() for the course. This will be the most convenient way to share information with everyone, to distribute links to readings and code, and to contact me. 
 
-## Required Work and Grading
+### Required Work and Grading
 
-There are three kinds of [assignments](assignments/) for the course: memos, problem sets, and a final project. 
+Four kinds of work are required: memos, problem sets, a midterm project, and a final project. 
 
-- **Reflection Memos** are 250 to 500 words long and response to the assigned reading. Problem sets are due on _Tuesdays_ by the end of the day.  
-- **Problem Sets** let you practice your visualization skills. Problem sets are due on _Fridays_ the week _after_ they are given out.
-- A **Final Project** will allow you to develop a more substantial visualization or series of visualizations. I will suggest several possible datasets, or you can propose your own. The project is due on Friday, November 20th. 
+- **Reflection Memos** are 250 to 500 words long and respond to the assigned reading. Memos are due _Sundays_ by 6:00pm.  
+- **Problem Sets** let you practice your visualization skills. Problem sets are due on _Tuesdays_ by 6:00pm.
+- A **Midterm Project** is due Friday February 11th. 
+- A **Final Project** is due Monday April 18th. 
 
 Reflection memos and problem sets may not be assigned every week.
 
 There is no final exam for the class.
 
-This semester, this course is graded on a Satisfactory/Unsatisfactory (S/U) scale. For more information about S/U courses and the special policies that apply for the Fall 2020 semester, please [carefully read this overview](https://trinity.duke.edu/undergraduate/academic-policies/unsatisfactory-satisfactory-grading-option) from the College of Arts & Sciences. You will obtain a Satisfactory grade in the course by (a) Attending and participating in class sessions, (b) Completing required weekly problem sets and exercises, and (c) Submitting the final project for the class.
+**Grading**: Memos 20% / Problem Sets 20% / Midterm Project 30% / Final Project 30%.
 
 ## Duke Community Standard
 

@@ -2,8 +2,8 @@
 <h1>Today's Slides</h1>
 {{ if .Page.Params.thumb}}
 <figure>
-    <a href="/slides/{{ .Page.Params.pdf }}.pdf"><img src="/slides/{{ .Page.Params.thumb }}.png" alt="First slide" /></a>
+    <a href="../{{ .Page.Params.pdf }}.pdf"><img src="../{{ .Page.Params.thumb }}.png" alt="First slide" /></a>
 </figure>
 {{ end }}
-<p><a class="btn btn-primary btn-lg" target="_blank" href="/slides/{{ .Page.Params.slides }}.pdf" role="button"><i class="far fa-file-pdf"></i> Download a PDF of today's slides</a></p>
+<p><a target="_blank" href="../{{ .Page.Params.slides }}.pdf" role="button">Download a PDF of today's slides</a></p>
 {{ end }}

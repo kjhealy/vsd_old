@@ -4,132 +4,65 @@ date = "Date"
 header = true
 
 [[lessons]]
-title = "Orientation and Setup"
-date = "Aug. 19"
-class = "01-class"
+title = "Orientation"
+date = "Jan. 5th"
 
 [[lessons]]
-title = "Get Up and Running"
-date = "Aug. 21"
-class = "02-class"
-show = "02-show"
+title = "Up and running with R"
+date = "Jan. 10th/12th"
 
 [[lessons]]
 title = "Ways of Seeing"
-date = "Aug. 26"
-class = "03-class"
-work = "03-work"
-
-[[lessons]]
-title = "Making Graphs"
-date = "Aug. 28"
-class = "04-class"
+date = "Jan. 17th/19th"
 
 [[lessons]]
 title = "Vision, Data, and Design"
-date = "Sep. 2"
-class = "05-class"
-work = "05-work"
+date = "Jan. 24th/26th"
 
 [[lessons]]
-title = "ggplot's Grammar of Graphics"
-date = "Sep. 4"
-class = "06-class"
-show = "06-show"
+title = "Showing the Right Numbers"
+date = "Jan. 31st/Feb 2nd"
 
 [[lessons]]
-title = "What is Data?"
-date = "Sep. 9"
-class = "07-class"
+title = "Midterm projects"
+date = "Feb. 7th/9th"
 
 [[lessons]]
-title = "Showing the Right Numbers, 1"
-date = "Sep. 11"
-class = "08-class"
-show = "08-show"
+title = "What is data?"
+date = "Feb. 14th/16th"
 
 [[lessons]]
-title = "Showing the Right Numbers, 2"
-date = "Sep. 16"
-class = "09-class"
-show = "09-show"
-
-
-[[lessons]]
-title = "Extending your Vocabulary"
-date = "Sep 18"
-work = "10-work"
-show = "10-show"
-class = "10-class"
-
-[[lessons]]
-title = "Tables and Text"
-date = "Sep. 25"
-class = "12-class"
-show = "12-show"
-
-[[lessons]]
-title = "Making Maps I"
-date = "Sep. 30"
-class = "13-class"
-show = "13-show"
-
-[[lessons]]
-title = "Making Maps II"
-date = "Oct. 2"
-class = "14-class"
-show = "14-show"
-work = "14-work"
-
-[[lessons]]
-title = "Names"
-date = "Oct. 7"
-class = "15-class"
-show = "15-show"
-
-[[lessons]]
-title = "More on Names"
-date = "Oct. 9"
-class = "16-class"
-show = "16-show"
-work = "16-work"
-
-[[lessons]]
-title = "Let's try that again"
-date = "Oct. 14"
+title = "Pandemic data"
+date = "Feb. 21st/23rd"
 
 [[lessons]]
 title = "Messy and Missing Data"
-date = "Oct. 16"
-class = "18-class"
-show = "18-show"
-work = "18-work"
+date = "Feb. 28th/Mar. 2nd"
 
 [[lessons]]
-title = "Visualizing Networks"
-date = "Oct. 21"
-class = "19-class"
-show = "19-show"
+title = "(Spring Break)"
+date = "Mar. 7th/9th"
 
 [[lessons]]
-title = "Congressional Data"
-date = "Oct. 23"
-class = "20-class"
-show = "20-show"
+title = "Maps"
+date = "Mar. 14th/16th"
+
+[[lessons]]
+title = "Demography"
+date = "Mar. 21st/23rd"
+
+[[lessons]]
+title = "Networks"
+date = "Mar. 28/30th"
 
 [[lessons]]
 title = "Social Theory and Social Data"
-date = "Oct. 28"
-class = "21-class"
+date = "Apr. 4th/6th"
 
 [[lessons]]
-title = "Zombie Data"
-date = "Oct 30"
-class = "22-class"
-show = "22-show"
+title = "Final Projects"
+date = "Apr. 11th/13th"
 
 [[lessons]]
-title = "Final Days"
-date = "Nov. 11 / 13"
-class = ""
-work = "23-work"
+title = "Catch-up"
+date = "Apr. 18th/20th"
