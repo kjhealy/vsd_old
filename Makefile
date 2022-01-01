@@ -16,7 +16,7 @@ clean:
 	find content -type f -name '*.html' -delete
 
 build:
-	Rscript -e "blogdown::build_site()"
+	Rscript -e "blogdown::build_site(build_rmd = TRUE)"
 
 serve: build
 	Rscript -e "blogdown::serve_site(port=4321)"
