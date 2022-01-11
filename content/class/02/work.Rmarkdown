@@ -1,6 +1,6 @@
 ---
-title: "01 - Work"
-date: "2022-01-01"
+title: "02 - Work"
+date: "2022-01-10"
 type: docs
 bibliography: "../../../static/bib/references.bib"
 csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
@@ -9,6 +9,10 @@ editor_options:
   chunk_output_type: console
 ---
 
-## Install R, RStudio, and the required packages
+## Set up your class notes
 
-- See the instructions in this week's [code section](../code/) describing how to do this.
+- Make a project in RStudio
+- Make and save an RMarkdown document for your notes
+- Make sure you can knit it to HTML
+ 
+

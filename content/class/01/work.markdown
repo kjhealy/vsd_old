@@ -11,4 +11,4 @@ editor_options:
 
 ## Install R, RStudio, and the required packages
 
-- See the instructions in this week's [code section](../code/) describing how to do this.
+-   See the instructions in this week’s [code section](../code/) describing how to do this.

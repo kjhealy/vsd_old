@@ -17,6 +17,7 @@ clean:
 
 build:
 	Rscript -e "blogdown::build_site(build_rmd = TRUE)"
+	hugo
 
 serve: build
 	Rscript -e "blogdown::serve_site(port=4321)"

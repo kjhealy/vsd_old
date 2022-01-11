@@ -15,17 +15,13 @@ We will be doing a lot of work in this class using two related pieces of softwar
 
 These notes describe how to download and install R and RStudio on your laptop, as well as how to install some additional stuff inside of R that we'll be using also.
 
-### Downloading R and RStudio
-
-[FIXME]
-
-### Installing R and RStudio on your Laptop
+## Download and install R and RStudio 
 
 - First install R (<http://cloud.r-project.org>). Choose the version appropriate for your computer: [macOS](https://cloud.r-project.org/bin/macosx/), [Windows](https://cloud.r-project.org/bin/windows/), or [Linux](https://cloud.r-project.org/bin/linux/).
 
 - Next, install RStudio (<http://rstudio.com>). Follow the links to download the [free RStudio Desktop edition](https://rstudio.com/products/rstudio/download/#download) recommended for your computer.
 
-### Installing the required additional Packages
+## Install the required additional Packages
 
 Once R and RStudio are installed, launch RStudio. Then, either carefully type in or (better) copy-and-paste the following lines of code at R’s command prompt, located in the RStudio window named “Console”, and then hit return. In the code below, the `<-` arrow is made up of two keystrokes, first < and then the short dash or minus symbol, -.
 
