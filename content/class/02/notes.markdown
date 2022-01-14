@@ -11,4 +11,6 @@ editor_options:
   chunk_output_type: console
 ---
 
+(PDF Updated January 14th.)
+
 {{< slide-buttons >}}
