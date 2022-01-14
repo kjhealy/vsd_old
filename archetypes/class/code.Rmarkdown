@@ -3,7 +3,7 @@ title: "01 - Code"
 date: "2022-01-01"
 type: docs
 bibliography: "../../../static/bib/references.bib"
-csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 tags: ["code"]
 editor_options: 
   chunk_output_type: console
