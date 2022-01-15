@@ -8,4 +8,6 @@ public
 .hugo_build.lock
 static/class/
 staging/**/*.markdown
-
+code.markdown
+work.markdown
+notes.markdown
