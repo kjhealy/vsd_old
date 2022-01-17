@@ -12,3 +12,5 @@ code.markdown
 work.markdown
 notes.markdown
 themes/hugo-geekdoc
+content/_index.markdown
+content/class/_index.markdown
