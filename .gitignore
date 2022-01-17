@@ -11,3 +11,4 @@ staging/**/*.markdown
 code.markdown
 work.markdown
 notes.markdown
+themes/hugo-geekdoc
