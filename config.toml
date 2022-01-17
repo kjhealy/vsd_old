@@ -1,16 +1,18 @@
 # This file is formatted using TOML syntax - learn more at https://learnxinyminutes.com/docs/toml/
 # Each configuration section is defined by a name in square brackets (e.g. `[outputs]`).
 
-# Title of your site
-title = ["Visualizing Social Data"]
 
 
 # The URL of your site.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
 baseurl = "/"
 
+# Title of your site
+title = ["Visualizing Social Data"]
+
+
 # Enter a copyright notice to display in the site footer.
-copyright = "2021"
+copyright = "2022"
 
 # Theme
 theme = "hugo-geekdoc"
@@ -31,6 +33,7 @@ enableGitInfo = true
     endLevel = 9
 
 [params]
+  my_course_title = "Visualizing Social Data"
   my_name = "Kieran Healy"
   my_email = "kieran.healy@duke.edu"
   my_url = "https://kieranhealy.org"
@@ -63,7 +66,7 @@ enableGitInfo = true
 
   # (Optional, default false) Collapse all menu entries, can not be overwritten
   # per page if enabled. Can be enabled per page via `geekdocCollapseSection`.
-  geekdocCollapseAllSections = false
+  geekdocCollapseAllSections = true
 
   # (Optional, default true) Show page navigation links at the bottom of each
   # docs page (bundle menu only).
