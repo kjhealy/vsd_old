@@ -1,0 +1,84 @@
+---
+title: Syllabus
+citeproc: true
+bibliography: ../../static/bib/references.bib
+csl: ../../static/bib/chicago-syllabus-no-bib.csl
+---
+
+```{r load-libraries, message=FALSE, warning=FALSE, include=FALSE}
+library(dplyr)
+library(tibble)
+library(pander)
+```
+
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("courseinfo")
+```
+
+## About this Course
+
+This class will do two things. First, it will teach you how to use modern, widely-used tools to create insightful, beautiful, reproducible visualizations of social science data. Second, you will also learn about the theory and practice of efforts to visualize sociological data, and society more generally. We will think about different ways of looking at social science data, about where data comes from in the first place, and about the implications of choosing to represent it in different ways.
+
+By the end of the course you will
+
+- Understand the basic principles behind effective data visualization.
+- Have a practical sense for why some graphs and figures work well,
+  while others may fail to inform or actively mislead.
+- Know how to create a wide range of plots in R using ggplot2.
+- Know how to refine plots for effective presentation.
+- Have an understanding of issues surrounding the collection and
+  representation of data in the social sciences and beyond.
+
+## Core Texts
+
+I recommend (but do not require) you buy two books: 
+
+- [@healy:2019] A draft version is freely-available online. The print version can be purchased at [Amazon](https://amzn.to/2vfAixM) and other bookshops.
+- [@wickhamgrolemund:2017] A draft version is freely-available online. The print version can be purchased at [Amazon](https://www.amazon.com/R-Data-Science-Hadley-Wickham/dp/1491910399/) and other bookshops.
+
+
+## Software
+
+We will do all of our visualization work in this class using [R](https://cran.r-project.org/) and use  [RStudio](https://www.rstudio.com/) to manage our code and projects. [R](https://cran.r-project.org/) is a freely-available programming language that is designed for statistical computing and widely used across the natural and social sciences, as well as in the rapidly-growing world of "data science" generally. [RStudio](https://www.rstudio.com/) is an integrated development environment, or IDE, for R, a kind of control center from which you can manage the engine-room of R itself. It is also freely available. 
+
+If you haven't used these tools before, don't worry. The course does not presuppose any familiarity with them. We will get up and running with them during the first week. 
+
+## Schedule
+
+`r blogdown::shortcode("topiclist")`
+
+The schedule is likely to change as we go. Links to readings, lecture notes, assignments, and other materials from class will be posted via the [Class](/class/) page. 
+ 
+### COVID-19 Considerations
+
+At present, all classes are fully remote until January 18th. I will email you details about the Zoom meetings.
+
+### Course policies
+
+- Attendance is required. I am a reasonable person; if you need to be absent please _let me know in advance_ insofar as that is possible.
+- Do the assigned readings in advance of class. 
+- Submit memos, problem sets, or other assigned work when they are due. 
+
+### Course Slack
+
+During the first week you will receive an invitation to the [Slack workgroup]() for the course. This will be the most convenient way to share information with everyone, to distribute links to readings and code, and to contact me. 
+
+### Required Work and Grading
+
+Four kinds of work are required: memos, problem sets, a midterm project, and a final project. 
+
+- **Reflection Memos** are 250 to 500 words long and respond to the assigned reading. Memos are due _Sundays_ by 6:00pm.  
+- **Problem Sets** let you practice your visualization skills. Problem sets are due on _Tuesdays_ by 6:00pm.
+- A **Midterm Project** is due Friday February 11th. 
+- A **Final Project** is due Monday April 18th. 
+
+Reflection memos and problem sets may not be assigned every week.
+
+There is no final exam for the class.
+
+**Grading**: Memos 20% / Problem Sets 20% / Midterm Project 30% / Final Project 30%.
+
+## Duke Community Standard
+
+Like all classes at the university, this course is conducted under the Duke Community Standard. Duke University is a community dedicated to scholarship, leadership, and service and to the principles of honesty, fairness, respect, and accountability. Citizens of this community commit to reflect upon and uphold these principles in all academic and nonacademic endeavors, and to protect and promote a culture of integrity. To uphold the Duke Community Standard you will not lie, cheat, or steal in academic endeavors; you will conduct yourself honorably in all your endeavors; and you will act if the Standard is compromised.

@@ -1,0 +1,22 @@
+{{ define "main" }}
+  {{ partial "page-header" . }}
+
+
+  <article
+    class="gdoc-markdown gdoc-markdown__align--{{ default "left" (.Page.Params.GeekdocAlign | lower) }}"
+  >
+      <h1>{{ partial "title" . }}</h1>
+      {{ partial "content" . }}
+
+      <ul style = "list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
+    {{ range .Pages.ByTitle.Reverse }}
+        <li style = "float: left;"><strong>
+        <a href="{{ .RelPermalink }}">
+          {{ .Title }}
+        </a>
+      </strong> / &nbsp;
+    {{ end }}
+    </ul>
+
+  </article>
+  {{ end }}
