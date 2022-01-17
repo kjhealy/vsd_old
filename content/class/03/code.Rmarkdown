@@ -1,13 +1,15 @@
 ---
-title: "03 - Code"
+title: "Code"
 date: "2022-01-14"
 type: docs
 bibliography: "../../../static/bib/references.bib"
 csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
 tags: ["code"]
+weight: 2
 editor_options: 
   chunk_output_type: console
 ---
 
 ## No code this week yet!
 
+(Check back later.)

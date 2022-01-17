@@ -1,7 +1,6 @@
 ---
-title: "01 - Work"
+title: "Work"
 date: "2022-01-01"
-type: docs
 bibliography: "../../../static/bib/references.bib"
 csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
 tags: ["code"]

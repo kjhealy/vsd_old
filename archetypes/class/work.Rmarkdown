@@ -1,10 +1,10 @@
 ---
-title: "01 - Work"
+title: "Work"
 date: "2022-01-01"
-type: docs
 bibliography: "../../../static/bib/references.bib"
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 tags: ["code"]
+weight: 3
 editor_options: 
   chunk_output_type: console
 ---

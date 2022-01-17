@@ -1,10 +1,10 @@
 ---
-title: "02 - Code"
+title: "Code"
 date: "2022-01-10"
-type: docs
 bibliography: "../../../static/bib/references.bib"
 csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
 tags: ["code"]
+weight: 2
 editor_options: 
   chunk_output_type: console
 ---
@@ -396,7 +396,7 @@ length(names(summary(mean(c(1:20)))))
 
 Nested functions are evaluated from the inside out.
 
--
+
 # Use the pipe operator: `%>%`
 
 Instead of nesting functions in parentheses, we can use the _pipe operator_:

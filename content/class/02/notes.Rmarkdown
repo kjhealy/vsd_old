@@ -1,10 +1,10 @@
 ---
-title: "02 - Notes"
+title: "Notes"
 date: "2022-01-10"  
 slides: "02_vsd_s22"  
 pdf: "02_vsd_s22"
 thumb: "02_vsd_s22_thumb"
-type: docs
+weight: 1
 bibliography: "../../../static/bib/references.bib"
 csl: "../../../static/bib/chicago-fullnote-bibliography-no-bib.csl"
 editor_options: 

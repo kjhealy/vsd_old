@@ -5,3 +5,8 @@ tags: ["class"]
 ---
 
 
+## Looking at the world
+
+Insights from the worlds of art criticism and elsewhere.
+
+Follow the links below to see the notes or slides, code, and assigned work for this week.

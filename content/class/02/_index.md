@@ -5,3 +5,6 @@ tags: ["class"]
 ---
 
 
+## Introducing the software tools we will be using
+
+Follow the links below to see the notes or slides, code, and assigned work for this week.
