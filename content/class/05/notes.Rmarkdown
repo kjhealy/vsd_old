@@ -1,0 +1,30 @@
+---
+title: "Notes"
+date: "2022-01-27"  
+bibliography: ../../../static/bib/references.bib
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+# A little primer on Color
+
+Captain Disillusion's seven minute overview of some concepts in color theory is worth your time:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FTKP0Y9MVus" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+# Reading for Wednesday
+
+- @ware08:_visual_think_desig [Chapter 2](ware2.pdf).
+- @tufte83:_visual_displ_quant_infor [Chapter 2](vdqch2.pdf).
+- @wilke:2019 [Chapters 2 and 3](cw23.pdf).
+
+In addition, I recommend
+
+- @healy:2019 [Chapters 1 to 3](http://socviz.co).
+
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```

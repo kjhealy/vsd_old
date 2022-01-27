@@ -1,9 +1,9 @@
 {{ if .Page.Params.slides}}
-<h1>Today's Slides</h1>
+<h3>This week's slides</h3>
 {{ if .Page.Params.thumb}}
 <figure>
     <a href="../{{ .Page.Params.pdf }}.pdf"><img src="../{{ .Page.Params.thumb }}.png" alt="First slide" /></a>
 </figure>
 {{ end }}
-<p><a target="_blank" href="../{{ .Page.Params.slides }}.pdf" role="button">Download a PDF of today's slides</a></p>
+<p><a target="_blank" href="../{{ .Page.Params.slides }}.pdf" role="button">Download a PDF of this week's slides</a></p>
 {{ end }}

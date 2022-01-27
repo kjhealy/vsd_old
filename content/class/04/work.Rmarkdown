@@ -1,0 +1,101 @@
+---
+title: "Work"
+date: "2022-01-20"
+bibliography: "../../../static/bib/references.bib"
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+tags: ["code"]
+weight: 3
+editor_options: 
+  chunk_output_type: console
+---
+
+## Problem Set 1
+
+Due by 5pm, Tuesday February 1st.
+
+## Instructions
+
+1. Use RStudio to create a file named something like `lastname_firstname_ps01.Rmd`
+
+2. Set up your file with a code chunk that loads the `tidyverse`, `gapminder`, and `palmerpenguins` packages along with `socviz`:
+
+```{r plot1, message = FALSE}
+library(tidyverse)
+library(gapminder)
+library(palmerpenguins)
+library(socviz)
+```
+
+3. Then use R to draw these plots:
+
+```{r plot-samples-1, fig.cap = "GDP and Life Expectancy 1", echo = FALSE, message = FALSE}
+
+ggplot(data = gapminder,  
+     mapping = aes(x = gdpPercap, y = lifeExp)) + 
+     geom_point() + 
+     geom_smooth() + 
+     labs(x = "GDP Per Capita",
+          y = "Life Expectancy",
+          title = "GDP and Life Expectancy",
+          caption = "Data: Gapminder")
+
+```
+
+
+```{r plot-samples-2, fig.cap = "GDP and Life Expectancy 2", echo = FALSE, message = FALSE}
+
+ggplot(data = gapminder,  
+     mapping = aes(x = gdpPercap, y = lifeExp)) + 
+     geom_point() + 
+     geom_smooth() + 
+     scale_x_log10(labels = scales::dollar) + 
+     labs(x = "GDP Per Capita (log scale)",
+          y = "Life Expectancy",
+          title = "GDP and Life Expectancy",
+          caption = "Data: Gapminder")
+
+```
+
+```{r plot-samples-3, fig.cap = "GDP and Life Expectancy 3", echo = FALSE, message = FALSE}
+ggplot(data = gapminder,  
+     mapping = aes(x = gdpPercap, y = lifeExp, size = pop)) + 
+     geom_point() + 
+     geom_smooth(method = "lm") + 
+     scale_x_log10(labels = scales::dollar) + 
+     labs(x = "GDP Per Capita (log scale)",
+          y = "Life Expectancy", size = "Population",
+          title = "GDP, Life Expectancy, and Population",
+          caption = "Data: Gapminder")
+
+```
+
+```{r plot-samples-4, fig.cap = "GDP and Life Expectancy 4", echo = FALSE, message = FALSE}
+ggplot(data = gapminder,  
+     mapping = aes(y = gdpPercap, x = lifeExp, size = pop)) + 
+     geom_point(color = "gray20", alpha = 0.3) + 
+     geom_smooth() +
+     scale_y_log10(labels = scales::dollar) + 
+     labs(y = "GDP Per Capita (log scale)",
+          x = "Life Expectancy", size = "Population",
+          title = "GDP, Life Expectancy, and Population")
+
+```
+
+4. Discuss in a few words 
+- a) What the mappings are in each plot.
+- b) How the plots do or do not illustrate the principles Tufte discusses.
+- c) The differences between Figures 2, 3, and 4, and what difference if any those differences make to your interpretation of the figure.
+
+5. Consider the `penguins` data:
+
+```{r}
+penguins
+```
+
+- Use what you've learned so far about plotting to explore this data and make a figure that shows something interesting about the data. Say in a sentence or two why it's interesting.
+
+
+## Submitting your work
+
+- By 5pm on Tuesday, submit your finished work to the Drop Box on the [Sakai Site for this course](https://sakai.duke.edu/portal/site/6e487b8c-7cca-4377-854a-8b46317fc96b).
+- You should include _two_ files. (1) An RMarkdown (`Rmd`) file with a name of the form `lastname_firstname_ps01.Rmd`. (2) _Either_ an HTML, _or_ a PDF, _or_ a Word file with the name e.g. `lastname_firstname_ps01.html` that is the knitted/completed version of the `Rmd` file.

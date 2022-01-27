@@ -1,0 +1,26 @@
+---
+title: "Notes"
+date: "2022-01-20"
+slides: "04_vsd_s22"  
+pdf: "04_vsd_s22"
+thumb: "04_vsd_s22_thumb"
+bibliography: ../../../static/bib/references.bib
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+# Making Graphs
+
+How to make graphs with ggplot; functions and mappings; how mapping a property differs from setting it; ggplot's flow of action.
+
+
+# Reading
+
+- [@wickhamgrolemund:2017]. [Chapter 2](https://r4ds.had.co.nz/explore-intro.html), [Chapter 3](https://r4ds.had.co.nz/data-visualisation.html), and [Chapter 4](https://r4ds.had.co.nz/workflow-basics.html).
+
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```

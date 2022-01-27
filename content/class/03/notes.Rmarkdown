@@ -1,6 +1,9 @@
 ---
 title: "Notes"
-date: "2022-01-14"  
+date: "2022-01-14"
+slides: "03_vsd_s22"  
+pdf: "03_vsd_s22"
+thumb: "03_vsd_s22_thumb"
 bibliography: ../../../static/bib/references.bib
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 weight: 1
@@ -14,6 +17,11 @@ editor_options:
 This week we will begin to learn more about the principles behind the design of good visualizations. Many of these principles will lead to rules of thumb, guidelines, and techniques that we will end up applying in the code we write. But it is also important to situate these ideas a little more generally. So we start not just with information design or data in particular, but with some questions about the nature of artistic representation in general. 
 
 
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```
+
+
 # No class on Monday (MLK day)
 
 
@@ -25,9 +33,3 @@ This week we will begin to learn more about the principles behind the design of 
 In addition to reading Berger, I recommend watching the first of the episodes of the TV program that went with the book:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0pDE4VX_9Kk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
-```{r, echo = FALSE}
-blogdown::shortcode_html("slide-buttons")
-```
