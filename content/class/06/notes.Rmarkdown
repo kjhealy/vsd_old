@@ -1,0 +1,19 @@
+---
+title: "Notes"
+date: "2022-02-04"  
+bibliography: ../../../static/bib/references.bib
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# Reading
+
+- [@wickhamgrolemund:2017]. [Chapter 5](https://r4ds.had.co.nz/transform.html), [Chapter 10](https://r4ds.had.co.nz/tibbles.html), and [Chapter 12](https://r4ds.had.co.nz/tidy-data.html).
+
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```

@@ -1,15 +1,14 @@
 ---
-title: "Work"
-date: "2022-02-04"
+title: "Code"
+date: "2022-01-01"
 bibliography: "../../../static/bib/references.bib"
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
-tags: ["work"]
-weight: 3
+tags: ["code"]
+weight: 2
 editor_options: 
   chunk_output_type: console
 ---
 
-## No problem set this week
+## No code this week!
 
-
-
+(Maybe check back later.)
