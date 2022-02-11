@@ -1,6 +1,9 @@
 ---
 title: "Notes"
-date: "2022-02-04"  
+date: "2022-02-04"
+slides: "06_vsd_s22"  
+pdf: "06_vsd_s22"
+thumb: "06_vsd_s22_thumb"
 bibliography: ../../../static/bib/references.bib
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 weight: 1

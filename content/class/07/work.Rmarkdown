@@ -1,14 +1,13 @@
 ---
-title: "Code"
-date: "2022-02-11"
+title: "Work"
+date: "2022-01-01"
 bibliography: "../../../static/bib/references.bib"
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 tags: ["code"]
-weight: 2
+weight: 3
 editor_options: 
   chunk_output_type: console
 ---
 
-## No code this week yet!
+## No assignments this week!
 
-(Maybe check back later.)

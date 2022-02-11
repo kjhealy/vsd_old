@@ -1,0 +1,23 @@
+---
+title: "Notes"
+date: "2022-02-11"  
+bibliography: ../../../static/bib/references.bib
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+
+## Reading
+
+- [@cegłowski10:_scott_scurv] 
+
+- [@starr92:_social_categ_claim_liber_state] ([PDF](psd92.pdf))
+
+- [@mora14:_cross_field_effec_ethnic_class] ([PDF](gcm14.pdf))
+
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```

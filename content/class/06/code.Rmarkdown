@@ -1,6 +1,6 @@
 ---
 title: "Code"
-date: "2022-01-01"
+date: "2022-02-11"
 bibliography: "../../../static/bib/references.bib"
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 tags: ["code"]
@@ -9,6 +9,275 @@ editor_options:
   chunk_output_type: console
 ---
 
-## No code this week!
 
-(Maybe check back later.)
+```{r plot1, message = FALSE}
+library(tidyverse)
+library(gapminder)
+library(socviz)
+```
+
+### Geoms can transform data
+
+```{r bar1}
+
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = bigregion))
+p + geom_bar()
+
+```
+
+```{r bar2}
+
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = bigregion))
+p + geom_bar(mapping = aes(y = ..prop..))
+
+```
+
+```{r bar3}
+
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = bigregion))
+p + geom_bar(mapping = aes(y = ..prop.., group = 1)) 
+
+
+```
+
+
+### Histograms and Density Plots 
+
+```{r hist_1}
+
+p <- ggplot(data = midwest,
+            mapping = aes(x = area))
+p + geom_histogram()
+
+p <- ggplot(data = midwest,
+            mapping = aes(x = area))
+p + geom_histogram(bins = 10)
+
+```
+
+
+```{r hist_2}
+
+oh_wi <- c("OH", "WI")
+
+p <- ggplot(data = subset(midwest, subset = state %in% oh_wi),
+            mapping = aes(x = percollege, fill = state))
+p + geom_histogram(alpha = 0.4, bins = 20)
+
+```
+
+
+```{r density_1}
+
+p <- ggplot(data = midwest,
+            mapping = aes(x = area))
+p + geom_density()
+
+
+```
+
+```{r density_2}
+
+
+p <- ggplot(data = midwest,
+            mapping = aes(x = area, fill = state, color = state))
+p + geom_density(alpha = 0.3)
+
+```
+
+### Avoid transformations when necessary with `geom_col()`
+
+
+```{r titanic_1}
+
+titanic
+
+```
+
+```{r titanic_2}
+
+p <- ggplot(data = titanic,
+            mapping = aes(x = fate, y = percent, fill = sex))
+p + geom_bar(position = "dodge", stat = "identity") + theme(legend.position = "top")
+
+```
+
+
+```{r lifegap_1}
+
+oecd_sum
+
+```
+
+```{r lifegap_2, fig.height = 4, fig.width = 9, layout = 'l-page'}
+
+p <- ggplot(data = oecd_sum,
+            mapping = aes(x = year, y = diff, fill = hi_lo))
+p + geom_col() + guides(fill = FALSE) +
+  labs(x = NULL, y = "Difference in Years",
+       title = "The US Life Expectancy Gap",
+       subtitle = "Difference between US and OECD average life expectancies, 1960-2015",
+       caption = "Data: OECD. After a chart by Christopher Ingraham,
+                  Washington Post, December 27th 2017.")
+
+```
+
+### Frequency Plots the Awkward Way: Don't do this any more than absolutely necessary
+
+```{r gss_tab}
+
+with(gss_sm, table(religion))
+
+```
+
+```{r gss_color_fill}
+
+
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = religion, color = religion))
+p + geom_bar()
+
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = religion, fill = religion))
+p + geom_bar() + guides(fill = FALSE)
+
+```
+
+```{r two_way_1}
+
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = bigregion, 
+                          fill = religion))
+p + geom_bar()
+
+```
+
+```{r two_way_2}
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = bigregion, 
+                          fill = religion))
+p + geom_bar(position = "fill")      
+```
+
+```{r two_way_3}
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = bigregion, 
+                          fill = religion))
+p + geom_bar(position = "dodge",
+             mapping = aes(y = ..prop..))      
+```
+
+
+```{r two_way_4}
+p <- ggplot(data = gss_sm,
+            mapping = aes(x = bigregion, 
+                          fill = religion))
+p + geom_bar(position = "dodge",
+             mapping = aes(y = ..prop.., 
+                           group = religion))       
+```
+
+This gets awkward and a bit confusing quite fast. In general it's better not to try to make ggplot do too much right at the plotting stage. Instead, pre-compute the numbers you want to show. We'll see how to do that next.
+
+
+## Dplyr pipelines: Much better
+
+```{r pipeline}
+
+rel_by_region <- gss_sm %>%
+    group_by(bigregion, religion) %>%
+    tally() %>%
+    mutate(freq = n / sum(n),
+           pct = round((freq*100), 1))
+
+```
+
+
+```{r 06-tables-and-labels-1 }
+rel_by_region
+```
+
+## Avoiding legends
+
+```{r 06-tables-labels-2, fig.width=7, fig.height=3}
+p <- ggplot(data = rel_by_region, 
+            mapping = aes(x = pct, y = religion, fill = religion))
+p + geom_col() +
+    labs(x = "Percent", y = NULL) +
+    guides(fill = FALSE) + 
+    facet_wrap(~ bigregion, nrow = 1)
+```
+
+
+## `n()`, `tally()`, and `count()`
+
+Compare and contrast. Note the different results for grouping. 
+
+```{r 06-2}
+gss_sm %>%
+    group_by(bigregion, religion) %>%
+    summarize(n = n()) 
+```
+
+```{r 06-3}
+gss_sm %>%
+    group_by(bigregion, religion) %>%
+    tally()
+```
+
+```{r 06-4}
+gss_sm %>%
+    count(bigregion, religion)
+```
+
+## Kinds of facet
+
+```{r 06-5}
+p <- ggplot(data = gss_sm, mapping = aes(x = age, y = childs))
+p + geom_point(alpha = 0.2) +
+    geom_smooth() + facet_wrap(~ race)
+```
+
+```{r 06-6, fig.height=3, fig.width = 7}
+p <- ggplot(data = gss_sm, 
+             mapping = aes(x = age, y = childs))
+p + geom_point(alpha = 0.2) +
+    geom_smooth() + 
+    facet_wrap(~ sex + race, nrow = 1)
+```
+
+```{r}
+p <- ggplot(data = gss_sm, mapping = aes(x = age, y = childs))
+p + geom_point(alpha = 0.2) +
+    geom_smooth(method = "lm") + facet_grid(bigregion ~ sex + race)
+```
+
+
+## The Organ Donation Data
+
+```{r organ-1}
+organdata
+```
+
+```{r}
+organdata %>% 
+  ggplot(mapping = aes(x = year, y = donors, group = country)) + 
+  geom_line() + 
+  facet_wrap(~ reorder(country, -donors, mean, na.rm = TRUE))
+```
+
+```{r}
+organdata %>% 
+  filter(country != "Spain") %>% 
+  ggplot(mapping = aes(x = donors, 
+                       y = reorder(country, donors, na.rm = TRUE))) + 
+  geom_boxplot() + 
+  facet_wrap(~ world, scales = "free_y", ncol = 1) + 
+  labs(x = "Donors", y = NULL) 
+
+```
+
+

@@ -1,13 +1,32 @@
 ---
 title: "Work"
-date: "2022-01-01"
+date: "2022-02-11"
 bibliography: "../../../static/bib/references.bib"
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
-tags: ["code"]
+tags: ["work"]
 weight: 3
 editor_options: 
   chunk_output_type: console
 ---
 
-## No assignments this week!
+## Problem Set 02: Due Friday, February 18th
+
+### Instructions
+
+1. Use RStudio to create a file named something like `lastname_firstname_ps02.Rmd`
+
+2. Set up your file with a code chunk that loads the `tidyverse` and `socviz` packages. 
+
+3. Carry out the tasks below, showing both your code and its output.
+
+### Tasks
+
+1. Draw a scatterplot (with `geom_point()`) showing year on the x-axis and the donation rate on the y-axis for all countries. Fit a line to the data with `geom_smooth()`. Does this seem like a useful way to look at the data? Say in a sentence why or why not.
+2. Facet your scatterplot by country, ordered from highest to lowest average donation rate. Experiment with using a linear fit instead of the default smoother and say whether it seems useful or not. 
+3. Make a new scatterplot that facets the data by one of the categorical measures in the data, such as `world`, `consent_law` or `consent_practice`. Do donation rates seem to differ by group on average?
+4. Experiment with the data to see if there is an association between the donation rate and measures like population density (`pop_dens`), public health spending (`pubhealth`), road accident fatalities (`roads`), assault deaths (`assault`), cerebrovascular deaths (`cerebvas`), or transplant centers (`txp_pop`). What do the differences between these scatterplots (e.g. the contrast between putting `pubhealth`, `assault`, and `txp_pop` on the x-axis) tell you about the data?
+5. Using `group_by`, group the data by `consent_law` and calculate the average donation rate for Informed Consent vs Presumed Consent countries. 
+6. Again using `group_by`, group the data by consent law and year, calculate the average donation rate, and plot the result as a line graph.
+7. Finally, redo task 6 but this time try calculating the standard deviation (`sd()`) of the donation rate as well as the mean. Use the result to plot a rough error bar showing plus or minus one standard deviation around the mean. (Hint: use `geom_ribbon()`)
+
 
