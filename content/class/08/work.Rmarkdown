@@ -1,0 +1,17 @@
+---
+title: "Work"
+date: "2022-01-01"
+bibliography: "../../../static/bib/references.bib"
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+tags: ["code"]
+weight: 3
+editor_options: 
+  chunk_output_type: console
+---
+
+## Reflection memo due Monday February 21st, 9:00am
+
+- Focusing on the COVID Tracking project's website, and the article about the CDC in the _New York Times_, write a brief memo (300-500 words) discussing your understanding of the Tracking Project and the relationship between its data collection efforts and official sources. 
+
+- Upload the memo to the Sakai dropbox, with a name something like `lastname_firstname_memo01.pdf`
+

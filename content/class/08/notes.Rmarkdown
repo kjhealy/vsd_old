@@ -1,0 +1,27 @@
+---
+title: "Notes"
+date: "2022-01-01"  
+bibliography: ../../../static/bib/references.bib
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```
+
+## Reading
+
+- @bouk17:_histor_polit_econom_person_data [[PDF](bouk_personal_data.pdf)]
+
+- Visit and explore [The COVID Tracking Project](https://covidtracking.com). Browse and read as much as you can. 
+- Robinson Meyer and Alexis Madrigal, "[America Has Not Fixed Its Deadliest Pandemic Errors](https://www.theatlantic.com/health/archive/2020/12/america-has-not-fixed-its-deadliest-pandemic-errors/617532/)". _The Atlantic_, December 31st 2020.
+- "[The C.D.C. Waited ‘Its Entire Existence for This Moment.’ What Went Wrong](cdc-nyt.pdf)?". _The New York Times_, 
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```

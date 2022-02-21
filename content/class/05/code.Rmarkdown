@@ -161,4 +161,3 @@ full_text %>%
   geom_col(show.legend = FALSE) 
 ```
 
-

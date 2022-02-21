@@ -17,7 +17,16 @@ editor_options:
 
 2. Set up your file with a code chunk that loads the `tidyverse` and `socviz` packages. 
 
-3. Carry out the tasks below, showing both your code and its output.
+3. Check to see that `organdata` is available:
+
+```{r organdata}
+library(tidyverse)
+library(socviz)
+
+organdata
+```
+
+4. Using the `organdata` data set, carry out the tasks below, showing both your code and its output.
 
 ### Tasks
 
