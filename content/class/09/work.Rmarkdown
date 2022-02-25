@@ -103,7 +103,7 @@ Now,
 
 1. Join this table of state populations to `nytcovstate` using `left_join()`.
 
-2. Calculate the case rate and the death per 100,000 people for each state. 
+2. Calculate the case rate and the death rate per 100,000 people for each state. 
 
 3. Plot the trend in daily cases for three states of your choice. 
 
