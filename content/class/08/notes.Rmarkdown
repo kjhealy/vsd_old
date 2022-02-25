@@ -1,6 +1,9 @@
 ---
 title: "Notes"
-date: "2022-01-01"  
+date: "2022-02-24"  
+slides: "08_vsd_s22"  
+pdf: "08_vsd_s22"
+thumb: "08_vsd_s22_thumb"
 bibliography: ../../../static/bib/references.bib
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 weight: 1
@@ -8,11 +11,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-
-
-```{r, echo = FALSE}
-blogdown::shortcode_html("slide-buttons")
-```
 
 ## Reading
 

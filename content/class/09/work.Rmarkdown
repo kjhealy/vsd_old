@@ -1,6 +1,6 @@
 ---
 title: "Work"
-date: "2022-01-01"
+date: "2022-02-24"
 bibliography: "../../../static/bib/references.bib"
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 tags: ["code"]
@@ -9,5 +9,131 @@ editor_options:
   chunk_output_type: console
 ---
 
-## No assignments this week!
+
+## Problem Set 03: Due Friday, March 4th before 5pm.
+
+### Instructions
+
+- 1. Use RStudio to create a file named something like `lastname_firstname_ps03.Rmd`
+
+- 2. Set up your file with a code chunk that loads the `tidyverse`, `socviz`, `slider`, and `covdata` packages. If you do not have `covdata` installed, then [learn more about the package here](https://kjhealy.github.io/covdata/). At a minimum, install it with, 
+
+```{r covdata, echo = TRUE, eval = FALSE}
+install.packages("slider")
+
+remotes::install_github("kjhealy/covdata@main")
+```
+
+Remember, you only have to install these packages _once_, so do not include the lines above in your RMarkdown file.
+
+Then, in your `Rmd` file:
+
+```{r organdata}
+library(tidyverse)
+library(slider)
+library(socviz)
+library(covdata)
+
+```
+
+- 3. Take the time to look at the documentation for the package. 
+
+- 4. Carry out the tasks below, showing both your code and its output.
+
+_Note_: The `covdata` package contains several different datasets. We will be workign with `stmf`, `nytcovstate`, and `apple_mobility`
+
+## Tasks
+
+### Section A. Short Term Mortality Fluctuations
+
+Read the package documentation for the `stmf` data set.
+
+Here is part of the `stmf` data:
+
+```{r}
+stmf %>% 
+  select(cname, year:sex, approx_date, age_group, death_rate, rate_total)
+```
+
+The `death_rate` variable is the rate that week for each `age_group` within `sex`. The `rate_total` is the total rate for all ages within sex that week, which is e.g. why it is the same number for the first five rows of the dataset: that's the overall rate for Australian males in week one of 2015. Meanwhile row one of the dataset is Australian males aged 0-14 for week 1 of 2015. Now, 
+
+
+- 1. Reproduce the following figure:
+
+![Excess mortality in Belgium](stmf-figure-1.png)
+
+(Hint: read the article in the documentation on "Excess Mortality Data").
+
+- 2. Choose one country in the dataset. For 2020 only, compare the mortality rates for men and women in that country. Does it seem like there are any differences beween men and women?
+
+- 3. For the same country, consider people between the ages of 75 and 84 only. Now compare the mortality rate for men and women again. Does it seem like there are any differences between men and women?
+
+
+### Section B. US Deaths due to COVID
+
+Examine the `nytcovstate` data:
+
+```{r}
+nytcovstate
+```
+
+The data are organized by date and state. Use `group_by()` and then calculate daily counts:
+
+```{r}
+nytcovstate %>% 
+  group_by(state) %>% 
+  mutate(daily_cases = cases - lag(cases, order_by = date), 
+         daily_deaths = deaths - lag(deaths, order_by = date)) 
+```
+
+Create this table of U.S. State populations:
+
+```{r}
+state_pops <- uspop %>%
+  filter(sex_id == "totsex", hisp_id == "tothisp") %>%
+  select(state_abbr, statefips, pop, state) %>%
+  rename(name = state, 
+         state = state_abbr, fips = statefips) %>%
+  mutate(state = replace(state, fips == "11", "DC"))
+
+state_pops
+```
+
+Now, 
+
+1. Join this table of state populations to `nytcovstate` using `left_join()`.
+
+2. Calculate the case rate and the death per 100,000 people for each state. 
+
+3. Plot the trend in daily cases for three states of your choice. 
+
+4. Use the `slide_dbl()` function to calculate a weekly moving average. Draw the plot you made in step 3 again, adding the moving average as a new layer. 
+
+### Section C. Mobility Data
+
+Apple's mobility data looks like this:
+
+```{r}
+apple_mobility
+```
+
+There are daily scores for `driving`, `transit`, and `walking` transportation types. 
+
+1. Choose _one_ region or city (e.g., somewhere near where you are from, if it is in the data). To do a quick search to see if somewhere is in there, try e.g.
+
+```{r}
+apple_mobility %>% 
+  filter(stringr::str_detect(region, "Cork"))
+
+```
+
+2. Draw a graph of the mobility trends for your place of choice. 
+
+3. What do you think this sort of data tells us about what's happening in these places? What if we wanted to compare two or more places?
+
+
+
+
+
+
 
