@@ -1,0 +1,20 @@
+---
+title: "Notes"
+date: "2022-01-01"  
+bibliography: ../../../static/bib/references.bib
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+
+# Reading
+
+- [@walker22:_analy_us_census_data], [Chapter 1](https://walker-data.com/census-r/the-united-states-census-and-the-r-programming-language.html "Chapter 1") (up to to section 1.4), [Chapter 2](https://walker-data.com/census-r/an-introduction-to-tidycensus.html), and [Chapter 3](https://walker-data.com/census-r/wrangling-census-data-with-tidyverse-tools.html). 
+
+- [@wilke:2019] [Chapter 15](https://clauswilke.com/dataviz/geospatial-data.html)
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```

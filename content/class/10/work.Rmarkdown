@@ -1,0 +1,34 @@
+---
+title: "Work"
+date: "2022-03-01"
+bibliography: "../../../static/bib/references.bib"
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+tags: ["code"]
+weight: 3
+editor_options: 
+  chunk_output_type: console
+---
+
+## Due by the end of Spring Break
+
+### Get a Census API key
+
+To obtain a Census API key, install the `tidycensus` package and then [read and follow the instructions in Walker Chapter 2.](https://walker-data.com/census-r/an-introduction-to-tidycensus.html#getting-started-with-tidycensus)
+
+### Test and make sure it's working
+
+```{r tidycensus}
+
+library(tidyverse)
+
+# install.packages("tidycensus")
+library(tidycensus)
+
+# census_api_key("YOUR KEY GOES HERE", install = TRUE)
+
+pop10 <- get_decennial(geography = "state",
+                                     variables = "P001001",
+                                     year = 2010)
+
+pop10
+```
