@@ -9,6 +9,132 @@ editor_options:
   chunk_output_type: console
 ---
 
-## No code this week!
+## Collider Bias
 
-(Maybe check back later.)
+```{r colliders}
+library(tidyverse)
+library(socviz)
+
+
+## Use of `quantile()` to create 99th percentile cutoff
+df <- tibble(looks = rnorm(10000),
+             talent = rnorm(10000), 
+             total = looks + talent, 
+             hollywood = total > quantile(total, 0.99))
+
+df %>% 
+  ggplot(mapping = aes(x = talent,
+                       y = looks)) + 
+  geom_point(alpha = 0.1) + 
+  geom_smooth(method = "lm")
+
+
+df %>% 
+  ggplot(mapping = aes(x = talent, 
+                       y = looks, 
+                       color = hollywood)) + 
+  geom_point(alpha = 0.1) + 
+  geom_smooth(method = "lm")
+```
+
+## Simpson's Paradox
+
+```{r simpson}
+
+
+
+library(palmerpenguins)
+
+
+ggplot(data = penguins,
+       aes(x = bill_length_mm,
+           y = bill_depth_mm)) +
+  geom_point(size = 3,
+             alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+
+
+ggplot(data = penguins,
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           group = species)) +
+  geom_point(aes(color = species,
+                 shape = species),
+             size = 3,
+             alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+  theme_minimal()
+
+
+ggplot(data = penguins,
+       aes(x = bill_length_mm,
+           y = bill_depth_mm)) +
+  geom_point(size = 3,
+             alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+
+```
+
+## Naniar 
+
+```{r naniar}
+library(naniar)
+library(visdat)
+
+organdata
+```
+
+```{r naniar2}
+gg_miss_var(organdata)
+```
+
+```{r naniar3}
+vis_dat(organdata)
+```
+
+```{r naniar4}
+miss_var_summary(organdata)
+```
+
+```{r naniar5}
+miss_case_summary(organdata)
+```
+
+```{r naniar6}
+
+organdata %>%
+  select(consent_law, year, pubhealth, roads) %>%
+  group_by(consent_law) %>%
+  miss_var_summary()
+```
+
+```{r var_miss}
+organdata %>%
+  select(consent_law, year, pubhealth, roads) %>%
+  group_by(consent_law) %>%
+  miss_var_summary()
+```
+
+
+## Upset plot
+
+```{r upset}
+gg_miss_upset(organdata)
+```
+
+## Missing data in the Congressional dataset
+
+```{r congress}
+# install_github("kjhealy/congress")
+library(congress)
+
+gg_miss_var(congress)
+
+
+gg_miss_upset(congress)
+```
+
+
+
