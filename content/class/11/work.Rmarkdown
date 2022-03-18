@@ -1,0 +1,124 @@
+---
+title: "Work"
+date: "2022-01-01"
+bibliography: "../../../static/bib/references.bib"
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+tags: ["code"]
+weight: 3
+editor_options: 
+  chunk_output_type: console
+---
+
+## Problem Set 04: Due by Friday March 25th at 5pm
+
+### Setup
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(socviz)
+library(tidycensus)
+library(tigris)
+library(colorspace)
+options(tigris_use_cache = TRUE)
+
+```
+
+
+### Instructions
+
+-   1.  Use RStudio to create a file named something like `lastname_firstname_ps04.Rmd`
+
+-   2.From last week, you should already have a Census API key and have the the `tidycensus` package instealled. [Reread Walker Chapter 2 for more details.](https://walker-data.com/census-r/an-introduction-to-tidycensus.html#getting-started-with-tidycensus) 
+-   3. Set up your file with a code chunk that loads the `tidyverse`, `socviz`, `tidycensus`, and `tigris` packages.
+- 4. Put the line
+
+`options(tigris_use_cache = TRUE)`
+
+after you load your packages. (This will prevent downloading Census data more than once.)
+
+Next, we will get some population measures from the American Community Survey.
+
+We make two little tables of the official variable name and a more readable short name for it.
+
+```{r}
+pop_names <- tribble(
+    ~varname, ~clean_name,
+    "B01003_001", "pop",
+    "B01001B_001", "black",
+    "B01001A_001", "white",
+    "B01001H_001", "nh_white",
+    "B01001I_001", "hispanic",
+    "B01001D_001", "asian"
+  )
+  
+pop_names
+
+inc_names <- tribble(
+    ~varname, ~clean_name,
+    "S1901_C01_012", "median_hh_inc")
+```
+
+Now we download county-level data for these variables and make some tables of the results:
+
+```{r}
+## Population groups
+## Code nerds note the use of `reduce` here 
+fips_pop <- get_acs(geography = "county", 
+                    variables = pop_names$varname, 
+                    cache_table = TRUE) %>% 
+  mutate(variable = reduce2(pop_names$varname, 
+                            pop_names$clean_name, 
+                            str_replace, 
+                            .init = variable)) %>% 
+  select(-moe) %>% 
+  pivot_wider(names_from = variable, values_from = estimate) %>% 
+  rename(fips = GEOID, name = NAME) 
+
+
+fips_pop
+```
+
+```{r}
+## Income data
+fips_inc <- get_acs(geography = "county", 
+                    variables = inc_names$varname,  
+                    cache_table = TRUE) %>% 
+  mutate(variable = str_replace(variable, 
+                            inc_names$varname, 
+                            inc_names$clean_name)) %>% 
+  rename(fips = GEOID, name = NAME) 
+```
+
+
+Next we grab the spatial data that will let us draw county-level maps.
+
+
+```{r, message = FALSE}
+fips_map <- get_acs(geography = "county", 
+                    variables = "B01001_001", 
+                    geometry = TRUE,
+                    shift_geo = FALSE,
+                    cache_table = TRUE) %>% 
+  select(GEOID, NAME, geometry) %>% 
+  rename(fips = GEOID, name = NAME)
+```
+
+```{r}
+fips_map
+```
+
+## Questions
+
+
+- 1. Using the `fips_pop` table, calculate the proportion of each racial or ethnic category per 100,000 people. You should end up with new columns showing that number (e.g. `hispanic_prop`) for each county.
+
+- 2. Join the table of population information to the spatial data using `left_join()`. How do you know your join worked?
+
+- 3. Draw maps of the proportion of county residents by race or ethnicity for any two of the categories. Choose a color palette that you think works well for showing these data.
+
+- 4. Read the R help page for the `cut_interval()` function in `ggplot2`. Use `cut_interval()` to turn the proportional measures into binned groups and map any two of those. Do the resulting maps look more or less informative than the continuous versions? Why or why not?
+
+- 5. Draw a map of the Median Household Income data.
+
+- 6. What are the ten richest counties in the U.S. according to this data? What are the five poorest?
+

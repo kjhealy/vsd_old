@@ -19,8 +19,10 @@ library(tidyverse)
 library(gutenbergr)
 library(tidytext)
 
+my_mirror <- "http://mirrors.xmission.com/gutenberg/"
+
 ## Get Ulysses
-raw_text <- gutenberg_download(4300) 
+raw_text <- gutenberg_download(4300, mirror = my_mirror) 
 ```
 
 
