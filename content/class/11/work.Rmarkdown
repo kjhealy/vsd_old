@@ -93,12 +93,13 @@ fips_inc <- get_acs(geography = "county",
 Next we grab the spatial data that will let us draw county-level maps.
 
 
-```{r, message = FALSE}
+```{r, message = FALSE, results = 'hide'}
 fips_map <- get_acs(geography = "county", 
                     variables = "B01001_001", 
                     geometry = TRUE,
-                    shift_geo = FALSE,
-                    cache_table = TRUE) %>% 
+                    resolution = "20m",
+                    cache_table = TRUE) %>%
+  shift_geometry() %>%
   select(GEOID, NAME, geometry) %>% 
   rename(fips = GEOID, name = NAME)
 ```

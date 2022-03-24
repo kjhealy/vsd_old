@@ -9,6 +9,501 @@ editor_options:
   chunk_output_type: console
 ---
 
-## No code this week!
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-(Maybe check back later.)
+
+```{r setup, include=TRUE}
+library(here)
+library(socviz)
+library(tidyverse)
+library(tidycensus)
+library(tigris)
+library(sf)
+library(babynames)
+
+theme_map <- function(base_size=9, base_family="") {
+    require(grid)
+    theme_bw(base_size=base_size, base_family=base_family) %+replace%
+        theme(axis.line=element_blank(),
+              axis.text=element_blank(),
+              axis.ticks=element_blank(),
+              axis.title=element_blank(),
+              panel.background=element_blank(),
+              panel.border=element_blank(),
+              panel.grid=element_blank(),
+              panel.spacing=unit(0, "lines"),
+              plot.background=element_blank(),
+              legend.justification = c(0,0),
+              legend.position = c(0,0)
+              )
+}
+
+
+
+
+```
+
+# Census Data
+
+## Population components example again
+
+
+```{r, message = FALSE, results='hide'}
+us_components <- get_estimates(geography = "state", 
+                               product = "components")
+```
+
+```{r}
+us_components
+
+unique(us_components$variable)
+```
+
+```{r, message = FALSE, results='hide'}
+net_migration <- get_estimates(geography = "county",
+                               variables = "RNETMIG",
+                               year = 2019,
+                               geometry = TRUE,
+                               resolution = "20m") %>%
+  shift_geometry() # puts Alaska and Hawaii in the bottom left
+```
+
+```{r}
+net_migration
+
+order <- c("-15 and below", "-15 to -5", 
+            "-5 to +5", "+5 to +15", "+15 and up")
+  
+net_migration <- net_migration %>%
+    mutate(groups = case_when(
+      value > 15 ~ "+15 and up",
+      value > 5 ~ "+5 to +15",
+      value > -5 ~ "-5 to +5",
+      value > -15 ~ "-15 to -5",
+      TRUE ~ "-15 and below"
+    )) %>%
+    mutate(groups = factor(groups, levels = order))
+  
+  state_overlay <- states(
+    cb = TRUE,
+    resolution = "20m") %>%
+    filter(GEOID != "72") %>%
+    shift_geometry()
+  
+ggplot() +
+    geom_sf(data = net_migration, 
+            mapping = aes(fill = groups, color = groups), 
+            size = 0.1) +
+    geom_sf(data = state_overlay, 
+            fill = NA, color = "black", size = 0.1) +
+    scale_fill_brewer(palette = "PuOr", direction = -1) +
+    scale_color_brewer(palette = "PuOr", direction = -1, guide = "none") +
+    coord_sf(datum = NA) +
+    theme_minimal() +
+    labs(title = "Net migration per 1000 residents by county",
+         subtitle = "US Census Bureau 2019 Population Estimates",
+         fill = "Rate",
+         caption = "Data acquired with the R tidycensus package")
+
+```
+
+
+## Manipulating Tibbles with Spatial Data
+
+```{r}
+## North Carolina shapefile / polygons, included in sf package
+nc <- st_read(system.file("shape/nc.shp", package = "sf"), quiet = T)
+
+nc
+```
+
+The spatial information is built in to the `GEOMETRY` column. `geom_sf()` understands this.
+
+```{r, fig.height = 4.5, fig.width=8}
+nc %>%   
+  ggplot() +
+  geom_sf() 
+
+
+```
+
+To show some quantity, map something to the `fill` aesthetic.
+
+```{r sfex, fig.height = 4.5, fig.width=8}
+nc %>%   
+  ggplot() +
+  geom_sf(mapping = aes(fill = NWBIR74)) 
+
+```
+
+If you have e.g. county or state data in a table, join it to the table with spatial information. 
+
+```{r sfex2}
+nc_components <- get_estimates(geography = "county",
+                               product = "components",
+                               state = "North Carolina",
+                               geometry = FALSE) # Don't download the spatial information
+
+nc_components
+
+unique(nc_components$variable)
+
+# Get the data in the right shape and
+# Make sure we have a column to join on
+nc_components <- nc_components %>% 
+  mutate(variable = str_to_lower(variable)) %>%
+  rename(FIPS = GEOID,
+         full_name = NAME) %>% 
+  pivot_wider(names_from = "variable", 
+              values_from = "value") 
+
+nc_components
+
+# Now join
+nc <- nc %>% 
+  left_join(nc_components, by = "FIPS")
+
+
+nc
+```
+
+Now we can plot any of these colunmns.
+
+```{r ncmap, fig.height = 4.5, fig.width=8}
+order <- c("-15 and below", "-15 to -5", 
+            "-5 to +5", "+5 to +15", "+15 and up")
+  
+nc <- nc %>%
+    mutate(rnm_grp = case_when(
+      rnetmig > 15 ~ "+15 and up",
+      rnetmig > 5 ~ "+5 to +15",
+      rnetmig > -5 ~ "-5 to +5",
+      rnetmig > -15 ~ "-15 to -5",
+      TRUE ~ "-15 and below"
+    )) %>%
+    mutate(rnm_grp = factor(rnm_grp, 
+                            levels = order))
+  
+ggplot() +
+  geom_sf(data = nc, 
+            mapping = aes(fill = rnm_grp), 
+            size = 0.1, 
+          color = "gray30") +
+    scale_fill_brewer(palette = "PuOr", direction = -1) +
+    theme_map() +
+    labs(title = "Net migration per 1000 residents by county",
+         subtitle = "US Census Bureau 2019 Population Estimates",
+         fill = "Rate",
+         caption = "Data acquired with the R tidycensus package | @kjhealy")
+```
+
+
+
+# The Babyname data
+```{r}
+# It's already ordered/arranged
+babynames
+```
+
+
+```{r}
+# But we could make that explicit too
+babynames %>% 
+  group_by(year, sex) %>% 
+  slice_max(order_by = prop, n = 3)
+```
+
+
+```{r, fig.height = 4.5, fig.width=8}
+# Plot the popularity of a single name
+babynames %>% 
+  filter(sex == "M" & name == "Oliver") %>% 
+  group_by(year) %>% 
+  ggplot(mapping = aes(x = year, y = prop)) + 
+  geom_line(size = 1.2) + 
+  scale_y_continuous(labels = scales::percent) +
+   scale_x_continuous(breaks = seq(1880, 2015, by = 10)) +
+   labs(y = "Percent of All Names", x = "Year", title = "Oliver")
+```
+
+
+```{r, fig.height = 4.5, fig.width=8}
+# Top name for boys and girls each year 
+babynames %>% 
+  group_by(sex, year) %>% 
+  slice_max(n = 1, order_by = prop)
+  
+# Plot of Mary
+babynames %>% 
+  filter(sex == "F") %>% 
+  group_by(year) %>% 
+  mutate(popularity = -rank(prop)) %>% 
+  filter(name == "Mary") %>% 
+  ggplot(mapping = aes(x = year, y = popularity)) + 
+  geom_point()
+
+```
+
+
+```{r, fig.height = 4.5, fig.width=8}
+babynames %>% 
+  group_by(year, sex) %>%
+  slice_max(n = 1, order_by = prop) %>% 
+  ggplot(mapping = aes(x = year, y = prop, color = sex)) + 
+  geom_line(size = 1) + scale_y_continuous(labels = scales::percent) +
+  scale_x_continuous(breaks = seq(1880, 2015, by = 10)) +
+   labs(y = "Percent", x = "Year",
+        title = "Most Popular Name as a Percent of All Names",
+   color = "Sex") + 
+  theme(legend.position = "top")
+```
+
+### Filter by proportion 
+
+```{r, fig.height = 4.5, fig.width=8}
+babynames %>% 
+  group_by(year, sex) %>%
+  filter(prop <= 0.001) %>%
+  group_by(year, sex) %>% 
+  tally() %>%   
+  ggplot(mapping = aes(x = year, y = n, color = sex)) + 
+  geom_line(size = 1) + scale_y_continuous(labels = scales::comma) +
+  scale_x_continuous(breaks = seq(1880, 2015, by = 10)) +
+  labs(y = "Count", x = "Year", 
+       title = "Names with a frequency of 1 in 1,000 or less",
+       color = "Sex") + 
+  theme(legend.position = "top")
+```
+
+## Write a function to draw a name plot
+
+```{r, fig.height = 4.5, fig.width=8}
+babynames %>% 
+  filter(sex == "M" & name == "Oliver") %>% 
+  group_by(year) %>% 
+  ggplot(mapping = aes(x = year, y = prop)) + 
+  geom_line(size = 1.2) + 
+  scale_y_continuous(labels = scales::percent) +
+   scale_x_continuous(breaks = seq(1880, 2015, by = 10)) +
+   labs(y = "Percent of All Names", x = "Year", title = "Oliver")
+```
+
+We don't want to have to copy and paste this code every time we'd like to look at a new name. Instead, we'll write a function to draw the plot for any given name, and _map_ it to a some vector of names.
+
+First let's write the function.
+
+```{r}
+## A bit more efficient
+make_nameplot <- function(the_name, the_sex) {
+  
+  babynames %>% 
+    filter(sex == the_sex) %>% 
+    filter(name == the_name) %>% 
+    group_by(year) %>% 
+    ggplot(mapping = aes(x = year, y = prop)) + 
+    geom_line(size = 1.1) + 
+    scale_y_continuous(labels = scales::percent) +
+    scale_x_continuous(breaks = seq(1880, 2015, by = 10)) +
+    labs(y = "Percent of All Names", x = "Year", title = the_name)
+  
+}
+
+```
+
+Next, which names? Here are some:
+
+```{r}
+## We'll assign gender on the basis of the most 
+## common designation of the _name_ in the babynames 
+## data, not my guess about people in particular
+
+example_names <- tibble(
+  name = c("Thorin", "Melanie", "Jacob", "Vincent", "Christina", "Livia", "Elyse", "Akash", "Eavan", "Krishna", "Jonah", "Jackson", "Jamael", "Georgiana", "Daniel"),
+  gen = c("M", "F", "M", "M", "F", "F", "F", "M", "F", "F", "M", "M", "M", "F", "M")
+)
+
+example_names
+
+```
+
+Now we're going to feed this data one bit at a time to the `make_nameplot()` function we just wrote. This is called _mapping_ a function. When we only need to pass one piece of information to a function to get it to work properly, we use `map()`. But our plotting function needs to know two things: the name we want and the sex category we want to look within. So we use `map2()`.
+
+```{r}
+example_names <- example_names %>% 
+  mutate(plot = map2(name, gen, make_nameplot))
+
+example_names
+```
+
+Isn't that nice? Using `mutate()` we've added a column to the table of data. Each entry in that column is a ggplot object that draws our plot for that name. We could look at them one by one, but let's _walk_ the list to print each one of them right here.
+
+
+```{r, fig.height = 4.5, fig.width=8}
+
+walk(example_names$plot, print)
+
+```
+
+Notice that these plots are _not_ comparable --- not just on the y-axis, but on the x-axis as well. Some names don't show up in the data until later years. Think about how you could make a comparable plot using these names. 
+
+
+
+## Name Heterogeneity
+
+```{r test}
+babynames %>% 
+  group_by(year, sex) %>%
+  slice(which.max(prop)) %>% 
+  ggplot(mapping = aes(x = year, y = prop, color = sex)) + 
+  geom_line(size = 1) + scale_y_continuous(labels = scales::percent) +
+   scale_x_continuous(breaks = seq(1880, 2015, by = 10)) +
+   labs(y = "Percent", x = "Year",
+        title = "Most Popular Name as a Percent of All Names",
+   color = "Gender") + theme(legend.position = "top")
+
+```
+
+
+## Julia Silge's example
+
+```{r}
+babynames %>%
+    group_by(year, sex) %>%
+    mutate(top_100 = row_number() <= 100) %>%
+    ungroup() %>%
+    # Silge uses count() with several variables and a weight. 
+    # This is equivalent to group_by(year, sex, top100) %>% count(n)
+    count(year, sex, top_100, wt = n) %>%
+    mutate(top_100 = if_else(top_100, "Top 100 names", "All other names"),
+           sex = if_else(sex == "F", "Baby girls", "Baby boys")) %>%
+    group_by(year, sex) %>%
+    mutate(prop = n / sum(n)) %>%
+    ungroup() %>%
+    ggplot(mapping = aes(x = year, y = prop, fill = top_100)) +
+    geom_area(alpha = 0.8) +
+    facet_wrap(vars(sex)) +
+    scale_fill_brewer(palette = "Paired") +
+    scale_y_continuous(labels = scales::percent) +
+    labs(x = NULL, y = NULL, fill = NULL,
+         title = "What proportion of babies are given the most common names?",
+         subtitle = "Proportion of babies given one of the top 100 names has been dropping, especially since about 1990") +
+    theme(legend.position = "bottom") +
+    guides(fill = guide_legend(reverse = TRUE))
+```
+
+## Which year was a name at the peak of its popularity?
+
+```{r}
+## One way ... (will work generally)
+babynames %>% 
+  filter(sex == "F", 
+         name %in% c("Linda", "Jennifer"))  %>%
+    group_by(name) %>%
+    mutate(max_yr = year[prop == max(prop)],
+           year_c = year - max_yr)
+
+## Alternatively (assuming the data are sorted)
+babynames %>% 
+  filter(sex == "F", 
+         name %in% c("Linda", "Jennifer"))  %>%
+    group_by(name) %>%
+    arrange(desc(prop)) %>% 
+    mutate(year_c = year - first(year)) %>% 
+    arrange(year)
+```
+
+
+## Heterogeneity: Blau and Shannon Indices
+
+```{r}
+## These functions work on data that we've already got a frequency count for
+
+get_blau <- function(feat_n){
+    1 - sum((feat_n / sum(feat_n))^2)
+  }
+  
+  
+get_shannon <- function(feat_n){
+    prop <- feat_n / sum(feat_n)
+    -sum(prop * log(prop))
+  }
+  
+babynames %>%
+    group_by(year, sex) %>%
+    summarize(blau = get_blau(n),
+              shannon = get_shannon(n)) %>%
+    ggplot(aes(x = year, y = shannon, color = sex)) +
+    geom_line(size = 1.2) +
+    scale_x_continuous(breaks = seq(1880, 2015, by = 10)) +
+    labs(y = "Shannon Index",
+         x = "Year",
+         color = "Gender") +
+    theme(legend.position = "top")
+
+```
+
+## Skew and Kurtosis
+
+
+```{r}
+#install.packages(e1071)
+library(e1071)
+
+babynames %>% 
+  filter(sex == "F", 
+         name %in% c("Linda", "Jennifer"))  %>%
+  group_by(name) %>% 
+  summarize(kurt = kurtosis(prop, na.rm = TRUE), 
+            skew = skewness(prop, na.rm = TRUE))
+
+babynames %>% 
+  filter(sex == "F", 
+         name %in% c("Linda", "Jennifer"))  %>%
+  ggplot(aes(x = year, y = prop, color = name)) + 
+  geom_line()
+
+```
+
+
+## Last letter of boys' names
+
+```{r}
+babynames %>%
+    filter(sex == "M") %>%
+    # A trick with str_sub() to get the last character: use -1
+    mutate(endletter = str_sub(name, -1)) %>%
+    group_by(year, endletter) %>%
+    summarize(letter_count = n()) %>%
+    # Calculate the proportion of end letters each year 
+    # Then recode them to just focus on N, E, with all 
+    # other letters in a third category 
+    mutate(letter_prop = letter_count / sum(letter_count), 
+           letter_rc = case_when(
+             endletter == "n" ~ "N",
+             endletter == "e" ~ "E", 
+             TRUE ~ "Other letters"
+           ), 
+           letter_rc = factor(letter_rc, 
+                              levels = c("E", "N", 
+                                         "Other letters"), 
+                              ordered = TRUE)) %>% 
+  ggplot(mapping = aes(x = year, 
+                       y = letter_prop, 
+                       group = endletter, 
+                       color = letter_rc)) + 
+  geom_line(size = 0.5) + 
+  scale_y_continuous(labels = scales::percent_format()) + 
+  scale_color_brewer(palette = "Set2") + 
+  guides(color = guide_legend(nrow = 1)) +
+  labs(x = "Year", 
+       y = "Percent of newborn boys' names ending in this letter", 
+       color = "Letter:",
+       title = "ONE OF N",
+       subtitle = "End-letters of boys' names in the U.S. since 1880", 
+       caption = "Data: United States Social Secturity Administration. Graph: @kjhealy") + 
+  theme(legend.position = "top")
+```
+
+

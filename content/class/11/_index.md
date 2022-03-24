@@ -1,5 +1,5 @@
 ---
-title: "11 - Maps and the Census"
+title: "11 - Maps, the Census, and Names"
 date: 2022-03-18T09:26:07-04:00
 tags: ["class"]
 ---

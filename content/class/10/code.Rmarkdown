@@ -184,7 +184,7 @@ library(cartogram)
 
 ### Population components example
 
-```{r, message = FALSE}
+```{r, message = FALSE, results='hide'}
 us_components <- get_estimates(geography = "state", 
                                product = "components")
 ```
@@ -195,7 +195,7 @@ us_components
 unique(us_components$variable)
 ```
 
-```{r, message = FALSE}
+```{r, message = FALSE, results='hide'}
 net_migration <- get_estimates(geography = "county",
                                variables = "RNETMIG",
                                year = 2019,
