@@ -28,7 +28,7 @@ options(tigris_use_cache = TRUE)
 
 -   1.  Use RStudio to create a file named something like `lastname_firstname_ps04.Rmd`
 
--   2.From last week, you should already have a Census API key and have the the `tidycensus` package instealled. [Reread Walker Chapter 2 for more details.](https://walker-data.com/census-r/an-introduction-to-tidycensus.html#getting-started-with-tidycensus) 
+-   2.From last week, you should already have a Census API key and have the the `tidycensus` package installed. [Reread Walker Chapter 2 for more details.](https://walker-data.com/census-r/an-introduction-to-tidycensus.html#getting-started-with-tidycensus) 
 -   3. Set up your file with a code chunk that loads the `tidyverse`, `socviz`, `tidycensus`, and `tigris` packages.
 - 4. Put the line
 

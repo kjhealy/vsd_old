@@ -140,7 +140,7 @@ nc %>%
 
 If you have e.g. county or state data in a table, join it to the table with spatial information. 
 
-```{r sfex2}
+```{r sfex2, results = "hide"}
 nc_components <- get_estimates(geography = "county",
                                product = "components",
                                state = "North Carolina",

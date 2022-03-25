@@ -3,6 +3,9 @@ title: "Notes"
 bibliography: ../../../static/bib/references.bib
 csl: ../../../static/bib/chicago-syllabus-no-bib.csl
 weight: 1
+slides: "11_vsd_s22"  
+pdf: "11_vsd_s22"
+thumb: "11_vsd_s22_thumb"
 editor_options: 
   chunk_output_type: console
 ---
