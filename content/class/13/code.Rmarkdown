@@ -1,0 +1,274 @@
+---
+title: "Code"
+date: "2022-01-01"
+bibliography: "../../../static/bib/references.bib"
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+tags: ["code"]
+weight: 2
+editor_options: 
+  chunk_output_type: console
+---
+
+## Animation
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(socviz)
+library(gganimate)
+
+library(gapminder)
+library(uscenpops)
+library(babynames)
+library(congress)
+```
+
+## Gapminder and doc examples
+
+```{r}
+p <- ggplot(data = gapminder, 
+            mapping = aes(x = gdpPercap, y=lifeExp, 
+                          size = pop, color = country)) +
+  geom_point(show.legend = FALSE, alpha = 0.7) +
+  scale_color_viridis_d() +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  labs(x = "GDP per capita", y = "Life expectancy")
+p
+
+```
+
+
+```{r, message = FALSE, warning = FALSE, results = FALSE}
+
+g1 <- p + transition_time(year) +
+  labs(title = "Year: {frame_time}")
+
+
+anim_save("code/g1.gif", g1)
+```
+
+```{r}
+knitr::include_graphics("g1.gif")
+```
+
+
+```{r, message = FALSE, warning = FALSE, results = FALSE}
+g2 <- p + facet_wrap(~continent) +
+  transition_time(year) +
+  labs(title = "Year: {frame_time}")
+
+anim_save("code/g2.gif", g2)
+
+```
+
+```{r}
+knitr::include_graphics("g2.gif")
+```
+
+
+```{r,  message = FALSE, warning = FALSE, results = FALSE}
+g3 <- p + transition_time(year) +
+  labs(title = "Year: {frame_time}") +
+  view_follow(fixed_y = TRUE)
+
+anim_save("code/g3.gif", g3)
+
+```
+
+```{r}
+knitr::include_graphics("g3.gif")
+```
+
+
+```{r,  message = FALSE, warning = FALSE, results = FALSE}
+g4 <- p + transition_time(year) +
+  labs(title = "Year: {frame_time}") +
+  shadow_wake(wake_length = 0.1, alpha = FALSE)
+
+anim_save("code/g4.gif", g4)
+
+```
+
+```{r}
+knitr::include_graphics("g4.gif")
+```
+
+## Census examples
+
+```{r}
+library(tidycensus)
+
+la_age_hisp <- get_estimates(geography = "county",
+                             product = "characteristics",
+                             breakdown = c("SEX", "AGEGROUP", "HISP"),
+                             breakdown_labels = TRUE,
+                             state = "CA",
+                             county = "Los Angeles")
+
+la_age_hisp
+
+```
+
+## Static population pyramid, LA County
+
+```{r}
+compare <- la_age_hisp %>% 
+  filter(str_detect(AGEGROUP, "^Age"),
+         HISP != "Both Hispanic Origins",
+         SEX != "Both sexes") %>%
+  mutate(value = ifelse(SEX == "Male", -value, value))
+
+
+compare
+```
+
+```{r}
+compare %>% 
+  ggplot(mapping = aes(x = AGEGROUP, y = value, fill = SEX)) +
+  geom_col(width = 1) +
+  scale_y_continuous(labels = function(y) paste0(abs(y / 1000), "k")) +
+  scale_x_discrete(labels = function(x) str_replace(x, "Age | years", "")) +
+  scale_fill_manual(values = c("darkred", "navy")) +
+  coord_flip() +
+  facet_wrap(~ HISP) +
+  labs(x = NULL,
+       y = "Census Bureau population estimate",
+       title = "Population structure by Hispanic origin",
+       subtitle = "Los Angeles County, California",
+       fill = NULL)
+```
+
+## Dynamic population pyramid for the US
+
+```{r}
+## drat::addRepo("kjhealy")
+## install.packages("uscenpops")
+  
+library(uscenpops)
+
+uscenpops
+
+```
+
+
+```{r}
+pop_pyr <- uscenpops %>% 
+  select(year, age, male, female) %>%
+  pivot_longer(male:female, names_to = "group", values_to = "count") %>%
+  group_by(year, group) %>%
+  mutate(total = sum(count), pct = (count/total)*100, base = 0) 
+
+pop_pyr
+
+```
+
+```{r}
+uscenpops %>%
+  group_by(year) %>%
+  summarize(max_age = max(age)) %>%
+  group_by(max_age) %>%
+  summarize(minyr = min(year), 
+            maxyr = max(year))
+
+```
+
+```{r}
+## Make all the Male ages negative
+pop_pyr$count[pop_pyr$group == "male"] <- -pop_pyr$count[pop_pyr$group == "male"]
+
+pop_pyr
+
+mbreaks <- c("1M", "2M", "3M")
+```
+
+
+```{r}
+p <- ggplot(data = pop_pyr,
+            mapping = aes(xmin = base,
+                          xmax = count, 
+                          y = age,
+                          fill = group))
+```
+
+
+```{r}
+p + geom_ribbon(alpha = 0.5) +
+    scale_x_continuous(labels = c(rev(mbreaks), "0", mbreaks), 
+                       breaks = seq(-3e6, 3e6, 1e6), 
+                       limits = c(-3e6, 3e6)) + 
+    scale_y_continuous(breaks = seq(10, 100, 10)) +
+    scale_fill_manual(values = my.colors("bly"), 
+                      labels = c("Female", "Male")) + 
+    guides(fill = guide_legend(reverse = TRUE))
+```
+
+```{r}
+p + geom_ribbon(alpha = 0.5) +
+    scale_x_continuous(labels = c(rev(mbreaks), "0", mbreaks), 
+                       breaks = seq(-3e6, 3e6, 1e6), 
+                       limits = c(-3e6, 3e6)) + 
+    scale_y_continuous(breaks = seq(10, 100, 10)) +
+    scale_fill_manual(values = my.colors("bly"), 
+                      labels = c("Female", "Male")) + 
+    guides(fill = guide_legend(reverse = TRUE)) + 
+  labs(x = "Age", y = "Number of People",
+         title = "{frame_time}. Absolute Age/Sex Distribution of the U.S. Population",
+         subtitle = "Age is top-coded at 75 until 1939, at 85 until 1979, and at 100 since 1980.",
+         caption = "Kieran Healy / kieranhealy.org / Data: US Census Bureau.",
+         fill = NULL) +
+    theme(legend.position = "bottom",
+          plot.title = element_text(size = rel(2), face = "bold"),
+          plot.subtitle = element_text(size = rel(2)),
+          plot.caption = element_text(size = rel(2)),
+          axis.text.y = element_text(size = rel(3)),
+          axis.text.x = element_text(size = rel(3)),
+          axis.title.x = element_text(size = rel(3)),
+          axis.title.y = element_text(size = rel(3)),
+          legend.text = element_text(size = rel(3)))
+```
+
+
+```{r}
+
+p_pyr_count <- p + geom_ribbon(alpha = 0.5) +
+    scale_x_continuous(labels = c(rev(mbreaks), "0", mbreaks), 
+                       breaks = seq(-3e6, 3e6, 1e6), 
+                       limits = c(-3e6, 3e6)) + 
+    scale_y_continuous(breaks = seq(10, 100, 10)) +
+    scale_fill_manual(values = my.colors("bly"), 
+                      labels = c("Female", "Male")) + 
+    guides(fill = guide_legend(reverse = TRUE)) +
+    labs(x = "Age", y = "Number of People",
+         title = "{frame_time}. Absolute Age/Sex Distribution of the U.S. Population",
+         subtitle = "Age is top-coded at 75 until 1939, at 85 until 1979, and at 100 since 1980.",
+         caption = "Kieran Healy / kieranhealy.org / Data: US Census Bureau.",
+         fill = NULL) +
+    theme(legend.position = "bottom",
+          plot.title = element_text(size = rel(2), face = "bold"),
+          plot.subtitle = element_text(size = rel(2)),
+          plot.caption = element_text(size = rel(2)),
+          axis.text.y = element_text(size = rel(3)),
+          axis.text.x = element_text(size = rel(3)),
+          axis.title.x = element_text(size = rel(3)),
+          axis.title.y = element_text(size = rel(3)),
+          legend.text = element_text(size = rel(3)))
+```
+
+
+```{r,  message = FALSE, warning = FALSE, results = FALSE}
+p_pyr_anim <- p_pyr_count + 
+  transition_time(as.integer(year)) + 
+  ease_aes("cubic-in-out")
+
+anim_save("code/pyramid.gif", p_pyr_anim, width = 1024, height = 1024)
+```
+
+
+```{r}
+knitr::include_graphics("pyramid.gif")
+```
+

@@ -1,0 +1,18 @@
+---
+title: "Notes"
+date: "2022-01-01"  
+slides: "13_vsd_s22.pdf"  
+pdf: "13_vsd_s22"
+thumb: "13_vsd_s22_thumb"
+bibliography: ../../../static/bib/references.bib
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r, echo = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```
