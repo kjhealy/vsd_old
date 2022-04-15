@@ -1,0 +1,3 @@
+hugodown::md_document:
+  fig_retina: 2
+  fig_asp: NULL

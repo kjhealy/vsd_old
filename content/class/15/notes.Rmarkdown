@@ -1,0 +1,19 @@
+---
+title: "Notes"
+date: "2022-04-13"  
+slides: "15_vsd_s22.pdf"  
+pdf: "15_vsd_s22"
+thumb: "15_vsd_s22_thumb"
+bibliography: ../../../static/bib/references.bib
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+weight: 1
+editor_options: 
+  chunk_output_type: console
+---
+
+- Slides to follow 
+
+
+```{r, echo = FALSE, eval = FALSE}
+blogdown::shortcode_html("slide-buttons")
+```

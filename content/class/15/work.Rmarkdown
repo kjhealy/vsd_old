@@ -1,0 +1,28 @@
+---
+title: "Work"
+date: "2022-04-13"
+bibliography: "../../../static/bib/references.bib"
+csl: ../../../static/bib/chicago-syllabus-no-bib.csl
+tags: ["code"]
+weight: 3
+editor_options: 
+  chunk_output_type: console
+---
+
+## Final Problem Set. Due Friday April 22nd by 6pm.
+
+
+### Instructions
+
+-   1. Download the [project template](https://github.com/kjhealy/vsd_proj_template/archive/refs/heads/main.zip). Unzip it and change the name of the file `Lastname_Firstname_vsd.Rmd` to your last name and first name.
+
+-   2. Follow the instructions within the `.Rmd` file. 
+
+-   For section 1, "Briefly Describe the Dataset" means write a paragraph summarizing what the data is, saying what the unit of observation is, what each column means (as best you can say) and any other remarks you might have. 
+
+-   For section 2, "Look at each column/variable in more detail", spend some time exploring the basic structure of the data, by e.g. writing code to summarize the variables or investigate aspects of them that seem interesting. See the **Code** page for this week for some initial nudges in the direction of what you might do here. You can also create some initial rough exploratory plots if you like, in addition to tables or other summaries. As you go, explain in the RMarkdown file what it is you are doing and why.
+
+-   For section 3, "Explore in more depth: at least three polished plots or maps". Following on from the exploratory work, make at least three plots that you think show something interesting about the data. Polish them up so that they look presentable and effective to you. Show your work (i.e. the code you write). Provide a motivation for and brief discussion of each plot. You can merge in external data if you like (e.g. from the Census---see this week's **Code** section again for an example), but it's not required. 
+
+-   For section 4, "Short final discussion: Scope and limits of this data", say what you think the limits of the dataset are, or the limits of the plots you've made, and e.g. what sort of data you'd need to make it better.
+
