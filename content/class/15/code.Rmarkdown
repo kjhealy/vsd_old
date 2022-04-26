@@ -74,10 +74,12 @@ zip_data <- get_acs(geography = "zcta",
         geometry = TRUE) %>% 
   rename(zip = GEOID) %>% 
   select(-moe) %>% 
+  tibble::as_tibble() %>% 
   pivot_wider(names_from = variable, 
               values_from = c(estimate)) %>% 
   rename_with(~ acs_vars$clean_name, 
-              all_of(acs_vars$varname))
+              all_of(acs_vars$varname)) %>% 
+  sf::st_as_sf()
 
 zip_data
 ```
@@ -91,13 +93,15 @@ county_data <- get_acs(geography = "county",
   rename(fips = GEOID, 
          county = NAME) %>% 
   select(-moe) %>% 
+  tibble::as_tibble() %>% 
   pivot_wider(names_from = variable, 
               values_from = c(estimate)) %>% 
   rename_with(~ acs_vars$clean_name, 
               all_of(acs_vars$varname)) %>% 
   filter(county %in% ny_county_boros$county) %>% 
   left_join(ny_county_boros, by = "county") %>% 
-  select(fips, county, borough, everything())
+  select(fips, county, borough, everything()) %>% 
+  sf::st_as_sf()
 
 
 county_data
