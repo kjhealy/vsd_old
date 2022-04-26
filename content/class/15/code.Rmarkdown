@@ -69,6 +69,7 @@ ny_county_boros
 zip_data <- get_acs(geography = "zcta", 
         variables = acs_vars$varname, 
         state = "NY", 
+        year = 2019,
         county = NULL, 
         geometry = TRUE) %>% 
   rename(zip = GEOID) %>% 
